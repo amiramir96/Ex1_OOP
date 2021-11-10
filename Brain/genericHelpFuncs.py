@@ -51,7 +51,7 @@ just simple cal for delta
 
 
 def deltaTime(start, stop):
-    return abs(stop - start)
+    return abs(stop - start)/12
 
 
 """
@@ -62,7 +62,7 @@ returns idx of last Call inside the 30sec range of task - inside the list of cal
 
 def gimmie30SecForward(list_of_calls: list, idx_start: int):
     idx_stop = idx_start + 1
-    top_time = list_of_calls[idx_start].getStartTime() + 10
+    top_time = list_of_calls[idx_start].getStartTime() + 30
     while idx_stop < len(list_of_calls) - 1:
         temp = list_of_calls[idx_stop].getStartTime()
         if temp < top_time:
