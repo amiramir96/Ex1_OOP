@@ -1,0 +1,32 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+
+'json file input - building && elevator data
+'Bnum.json
+'csv file input - call for elevator data
+'Calls_letter.csv
+
+'elev list Sorted via ID number!
+Bnum.json --> list_of_elevators: parse json to elev list obj
+
+'Calls list Sorted via start time of task!!!
+Calls_letter.csv --> list_of_calls: parse csv to calls list of obj
+
+'construct the whole environment!
+list_of_elevators --> Building : hold elev datas at building
+list_of_calls --> Building : hold Calls datas at building
+Bnum.json --> Building : grants min max floors
+
+'the brain take his data from Building and only his
+Building --> Brain : algorithm shall start run
+
+Brain --> Brain : algorithm system (to be done)
+
+Brain --> Building : edit "allocatedTo" cell to choosen elevator at list_of_calls
+
+Brain --> writer_to_csv : end of algo
+
+writer_to_csv --> output.csv : print for idx in list_of_calls ea line
+
+@enduml
