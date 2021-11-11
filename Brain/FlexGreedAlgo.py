@@ -3,6 +3,7 @@ import Ex1Objects.Elevator
 import Ex1Objects.CallForElevator
 import random
 import Brain.genericHelpFuncs
+import Brain.Fixer
 
 """
 greed algorithm, always take the optimal mission(DEFINITION): which is gonna end as fast as possible by the curr elevator
@@ -10,8 +11,9 @@ there is 3 type of modes:
 1- dont sort elevators, run from ID=0 till ID = building.numOfElevators()-1
 2- sortElevators from slowest to fastest
 3- sortElevators opositely to(2) - fastest to slowest
-
 after algorithm is ending - engage randomally the calls that remained unengaged (in reserveSort mode is barely to not at all happens)
+
+also use Fixer!
 """
 
 
@@ -76,8 +78,8 @@ class FlexGreedAlgo:
                 else:
                     idx = idx + 1
 
-        #just a plaster
-        for y in range(0, len(list_of_calls)):
-            c = list_of_calls[y]
-            if c.getAllocatedTo() == -1:
-                list_of_calls[y].setAllocatedTo(random.randint(0, self.building.getNumberOfElevetors()-1))
+        """
+        shall engage the unchoosen calls somehow so...
+        use the fixer! for more info, move to Fixer.py file
+        """
+        Brain.Fixer.FixerSkelton(list_of_calls, self.building)

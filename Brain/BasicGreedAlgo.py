@@ -18,8 +18,8 @@ after algorithm is ending - engage randomally the calls that remained unengaged 
 class BasicGreedAlgo:
     def __init__(self, Building):
         self.building = Building
-        # Brain.genericHelpFuncs.sortElevator(self.building.getListOfElevator())
-        Brain.genericHelpFuncs.reserveSortElevator(self.building.getListOfElevator())
+        Brain.genericHelpFuncs.sortElevator(self.building.getListOfElevator())
+        # Brain.genericHelpFuncs.reserveSortElevator(self.building.getListOfElevator())
 
     def run(self):
         list_of_calls = self.building.getListOfCalls()
@@ -54,8 +54,16 @@ class BasicGreedAlgo:
                 else:
                     idx = idx + 1
 
-        # just a plaster of random algo
-        for y in range(0, len(list_of_calls)):
-            c = list_of_calls[y]
-            if c.getAllocatedTo() == -1:
-                list_of_calls[y].setAllocatedTo(random.randint(0, self.building.getNumberOfElevetors() - 1))
+        # # # just a plaster of random algo
+        # counter = 0
+        # for y in range(0, len(list_of_calls)):
+        #     c = list_of_calls[y]
+        #     if c.getAllocatedTo() == -1:
+        #         counter = counter+1
+        #         list_of_calls[y].setAllocatedTo(random.randint(0, self.building.getNumberOfElevetors() - 1))
+        # print(counter)
+        """
+        shall engage the unchoosen calls somehow so...
+        use the fixer! for more info, move to Fixer.py file
+        """
+        Brain.Fixer.FixerSkelton(list_of_calls, self.building)

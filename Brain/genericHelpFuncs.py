@@ -10,9 +10,9 @@ True if check number is between two others
 
 def isBetween(start, stop, check):
     ans = False
-    if stop <= check and check <= start:
+    if stop <= check <= start:
         return not ans
-    elif stop >= check and check >= start:
+    elif stop >= check >= start:
         return not ans
     return ans
 
@@ -51,7 +51,7 @@ just simple cal for delta
 
 
 def deltaTime(start, stop):
-    return abs(stop - start)/12
+    return abs(stop - start)/100
 
 
 """
@@ -99,7 +99,7 @@ use bubble sort since there is small amount of elevators
 def sortElevator(list_of_elevators: list):
     for i in list_of_elevators:
         for j in range(0, len(list_of_elevators) - 1):
-            if (list_of_elevators[j].getSpeed() > list_of_elevators[j + 1].getSpeed()):
+            if list_of_elevators[j].getSpeed() > list_of_elevators[j + 1].getSpeed():
                 temp = list_of_elevators[j]
                 list_of_elevators[j] = list_of_elevators[j + 1]
                 list_of_elevators[j + 1] = temp

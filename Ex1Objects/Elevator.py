@@ -39,7 +39,7 @@ class Elevator:
     def getPos(self):
         return self.currPos
 
-    def setPost(self, floor):
+    def setPos(self, floor):
         self.currPos = floor
 
     def getState(self):

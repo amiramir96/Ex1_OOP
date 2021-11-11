@@ -16,6 +16,9 @@ class Building:
     def getNumberOfElevetors(self):
         return len(self.list_of_elev)
 
+    def getListOfElevator(self):
+        return self.list_of_elev
+
     def getElevator(self, id_elev):
         return self.list_of_elev[id_elev]
 
