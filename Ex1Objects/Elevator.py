@@ -11,6 +11,7 @@ class Elevator:
         self.stopTime = stopTime
         self.currPos = 0
         self.state = 0
+        self.currTime = 0.0
 
     def getID(self):
         return self.id
@@ -47,6 +48,12 @@ class Elevator:
 
     def getTotalDelayTime(self):
         return self.startTime+self.stopTime+self.openTime+self.closeTime
+
+    def getCurrTime(self):
+        return self.currTime
+
+    def setCurrTime(self, time):
+        self.currTime = time
 
     def __str__(self):
         return ""+str(self.id)+","+str(self.speed)+","+str(self.minFloor)+","+str(self.maxFloor)+","+str(self.closeTime)\
