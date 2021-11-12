@@ -3,6 +3,18 @@ import Ex1Objects.CallForElevator
 import Ex1Objects.Building
 import math
 
+
+def timeToEndCall(call: list, elev: Ex1Objects.Elevator):
+    """return time to end call c by elevator e"""
+    start = call[3]
+    stop = call[4]
+    curr_pos = elev.getPos()
+    no_of_floors = abs(curr_pos-start)+abs(start-stop)
+    moving_time = elev.getSpeed()*no_of_floors
+    stopping_time = elev.getTotalDelayTime()*2
+    return elev.getTime()+moving_time+stopping_time
+
+
 """
 True if check number is between two others
 """
@@ -44,6 +56,12 @@ def timeToEndTask(elev: Ex1Objects.Elevator.Elevator, start, stop, delay_from_pr
                                    elev.getCloseTime() + elev.getStartTime() + elev.getStopTime() + elev.getOpenTime()) * stop_amount
     output_time = floors_move_time + stops_delay_time + delay_from_prev_task
     return output_time
+
+
+
+
+
+
 
 
 # def howManyStops(elev: Ex1Objects.Elevator.Elevator, list_of_calls):
