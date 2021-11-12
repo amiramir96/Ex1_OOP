@@ -26,9 +26,8 @@ def FixerSkelton(list_of_calls: list, building):
         if c.getAllocatedTo() == -1:
             # big enough number to start work with the variable
             min_delay = 1000000
-            for x in range(0, building.getNumberOfElevetors()):
+            for elev in building.getListOfElevator():
                 # check every elevator
-                elev = building.getElevator(x)
                 # take calls before and after
                 a = gimmieCallIdxBefore(elev, y, list_of_calls)
                 b = gimmieCallIdxAfter(elev, y, list_of_calls)
@@ -36,7 +35,7 @@ def FixerSkelton(list_of_calls: list, building):
                 delay = delayTime(elev, a, b, y, list_of_calls)
                 if min_delay > delay:
                     min_delay = delay
-                    fixer_elev_id = x
+                    fixer_elev_id = elev.getID()
             # set the best from the worst xD
             c.setAllocatedTo(fixer_elev_id)
 
@@ -55,7 +54,7 @@ def gimmieCallIdxBefore(elev: Ex1Objects.Elevator.Elevator, curr_idx, cList: lis
             a = a - 1
         else:
             break
-    if (a <= 0):
+    if a < 0:
         a = 0
     return a
 

@@ -45,6 +45,9 @@ class Elevator:
     def getState(self):
         return self.state
 
+    def getTotalDelayTime(self):
+        return self.startTime+self.stopTime+self.openTime+self.closeTime
+
     def __str__(self):
         return ""+str(self.id)+","+str(self.speed)+","+str(self.minFloor)+","+str(self.maxFloor)+","+str(self.closeTime)\
                +","+str(self.openTime)+","+str(self.startTime)+","+str(self.stopTime)+","+str(self.getPos())\

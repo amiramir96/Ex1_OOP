@@ -1,7 +1,7 @@
 class CallForElevator:
-#    state INIT=0, GOING2SRC=1, GOIND2DEST=2, DONE=3;
-#    type UP=1, DOWN=-1;
-#    id is index of Call at the cList (list_of_calls)
+    #    state INIT=0, GOING2SRC=1, GOIND2DEST=2, DONE=3;
+    #    type UP=1, DOWN=-1;
+    #    id is index of Call at the cList (list_of_calls)
     def __init__(self, time, src, dest, state, allocatedTo, id):
         self.time = float(time)
         self.src = int(src)
@@ -20,9 +20,9 @@ class CallForElevator:
     def getState(self):
         return self.state
 
-    #only 0 to 3 numbers is valid!!
+    # only 0 to 3 numbers is valid!!
     def setState(self, new_status):
-        if(0 <= new_status and new_status <= 3):
+        if (0 <= new_status and new_status <= 3):
             self.state = new_status
 
     def getStatus(self):
@@ -46,6 +46,9 @@ class CallForElevator:
     def getId(self):
         return int(self.id)
 
+    def getDistance(self):
+        return abs(self.dest - self.src)
+
     def __str__(self):
-        return "Elevator call"+","+str(self.getStartTime())+","+str(self.getSrc())\
-               +","+str(self.getDest())+","+str(self.state)+","+str(self.allocatedTo)
+        return "Elevator call" + "," + str(self.getStartTime()) + "," + str(self.getSrc()) \
+               + "," + str(self.getDest()) + "," + str(self.state) + "," + str(self.allocatedTo)

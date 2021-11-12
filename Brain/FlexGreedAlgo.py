@@ -12,7 +12,6 @@ there is 3 type of modes:
 2- sortElevators from slowest to fastest
 3- sortElevators opositely to(2) - fastest to slowest
 after algorithm is ending - engage randomally the calls that remained unengaged (in reserveSort mode is barely to not at all happens)
-
 also use Fixer!
 """
 
@@ -20,16 +19,15 @@ also use Fixer!
 class FlexGreedAlgo:
     def __init__(self, Building):
         self.building = Building
-        # Brain.genericHelpFuncs.sortElevator(self.building.getListOfElevator())
-        Brain.genericHelpFuncs.reserveSortElevator(self.building.getListOfElevator())
+        Brain.genericHelpFuncs.sortElevator(self.building.getListOfElevator())
+        # Brain.genericHelpFuncs.reserveSortElevator(self.building.getListOfElevator())
 
     def run(self):
         list_of_calls = self.building.getListOfCalls()
         """
         run every elevator with its turn, from idx 0 to last at list_of_elevators
         """
-        for x in range(0, self.building.getNumberOfElevetors()):
-            elev = self.building.getElevator(x)
+        for elev in self.building.getListOfElevator():
             """
             idx - very important index, always point to the curr call which we check
             loop - run on all the list_of_calls
@@ -48,7 +46,7 @@ class FlexGreedAlgo:
                     """
                     first_unengaged_call_time = list_of_calls[idx].getStartTime()
 
-                    idx_30s = Brain.genericHelpFuncs.gimmie30SecForward(list_of_calls, idx)
+                    idx_30s = Brain.genericHelpFuncs.gimmie30SecForward(self.building, elev, list_of_calls, idx)
                     idx_opt = idx
 
                     temp_call = list_of_calls[idx_opt]
