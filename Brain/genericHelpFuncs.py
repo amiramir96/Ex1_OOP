@@ -12,7 +12,7 @@ def timeToEndCall(call: list, elev: Ex1Objects.Elevator):
     no_of_floors = abs(curr_pos-start)+abs(start-stop)
     moving_time = elev.getSpeed()*no_of_floors
     stopping_time = elev.getTotalDelayTime()*2
-    return elev.getTime()+moving_time+stopping_time
+    return elev.getCurrTime()+moving_time+stopping_time
 
 
 """
