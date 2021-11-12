@@ -69,7 +69,7 @@ class FlexGreedAlgo:
 
                         idx = idx + 1
                     # best mission found, edit it on list_of_calls, also edit elevator currPos for next iterate
-                    list_of_calls[idx_opt].setAllocatedTo(elev.getID())
+                    list_of_calls[idx_opt].setAllocatedTo(elev.getId())
                     elev.setPos(list_of_calls[idx_opt].getDest())
                     idx = Brain.genericHelpFuncs.gimmieIdxEndOfTask(list_of_calls, idx_opt, temp_opt_time)
 

@@ -4,15 +4,56 @@ import Ex1Objects.Building
 import math
 
 
-def timeToEndCall(call: list, elev: Ex1Objects.Elevator):
+def timeToEndCall(call: Ex1Objects.CallForElevator.CallForElevator, elev: Ex1Objects.Elevator.Elevator):
     """return time to end call c by elevator e"""
-    start = call[3]
-    stop = call[4]
+    start = call.getSrc()
+    stop = call.getDest()
     curr_pos = elev.getPos()
-    no_of_floors = abs(curr_pos-start)+abs(start-stop)
-    moving_time = elev.getSpeed()*no_of_floors
-    stopping_time = elev.getTotalDelayTime()*2
-    return elev.getCurrTime()+moving_time+stopping_time
+    no_of_floors = abs(curr_pos - start) + abs(start - stop)
+    moving_time = no_of_floors / elev.getSpeed()
+    stopping_time = elev.getTotalDelayTime() * 2
+    return elev.getCurrTime() + moving_time + stopping_time
+
+
+def timeTravelNoDelay(start, stop, elev: Ex1Objects.Elevator.Elevator):
+    """return time to for TRAVEL only by elevator e"""
+    curr_pos = elev.getPos()
+    no_of_floors = abs(curr_pos - start) + abs(start - stop)
+    moving_time = no_of_floors / elev.getSpeed()
+    return elev.getCurrTime() + moving_time
+
+
+"""
+return list_of_calls which contains into the first call (call input function)
+this calls shall stand with the next terms:
+1- being same type with the input call
+2- their path shall be contained into the input call path
+3- the checken call have to "show up" in the scenario time BEFORE the elev is getting to her src floor
+"""
+
+
+def containedTime(list_of_calls: list, call: Ex1Objects.CallForElevator.CallForElevator,
+                  elev: Ex1Objects.Elevator.Elevator, time_end_call: float):
+    output_list = [call]
+    # thats the last call on the list, proccess is uneedded
+    if call.getId == len(list_of_calls) - 1:
+        return output_list
+
+    # start proccess
+    idx = call.getId() + 1
+    # terms
+    print(elev.getId(), elev.getCurrTime())
+    while idx < len(list_of_calls) and list_of_calls[idx].getStartTime() <= time_end_call:
+        if list_of_calls[idx].getAllocatedTo() == -1 and call.isContained(list_of_calls[idx]):
+            # roof_time - higher/equal to that, couldnt stop to take mission
+            roof_time = elev.getTotalDelayTime() - 1 + timeTravelNoDelay(call.getSrc(), list_of_calls[idx].getSrc(),
+                                                                         elev)
+            print(roof_time, list_of_calls[idx].getStartTime())
+            if roof_time > list_of_calls[idx].getStartTime():
+                output_list.append(list_of_calls[idx])
+        idx = idx + 1
+
+    return output_list
 
 
 """
@@ -53,15 +94,9 @@ output_time is float type!!
 def timeToEndTask(elev: Ex1Objects.Elevator.Elevator, start, stop, delay_from_prev_task, stop_amount):
     floors_move_time = (abs(elev.getPos() - start) + abs(start - stop)) / elev.getSpeed()
     stops_delay_time = (
-                                   elev.getCloseTime() + elev.getStartTime() + elev.getStopTime() + elev.getOpenTime()) * stop_amount
+                               elev.getCloseTime() + elev.getStartTime() + elev.getStopTime() + elev.getOpenTime()) * stop_amount
     output_time = floors_move_time + stops_delay_time + delay_from_prev_task
     return output_time
-
-
-
-
-
-
 
 
 # def howManyStops(elev: Ex1Objects.Elevator.Elevator, list_of_calls):
@@ -154,11 +189,12 @@ def reserveSortElevator(list_of_elevators: list):
                 list_of_elevators[j + 1] = temp
 
 
-
 """
 sort first the "isSlow" elev from fast to slow
 then the "!isSlow" elev from fast to slow
 """
+
+
 def specialSortElevator(building, list_of_elevators: list):
     for i in list_of_elevators:
         for j in range(0, len(list_of_elevators) - 1):
@@ -171,17 +207,19 @@ def specialSortElevator(building, list_of_elevators: list):
         if isSlow(building, x):
             counter = counter + 1
 
-    for i in range(counter-1, int((counter)/2), -1):
-        swap(list_of_elevators, i, counter-1-i)
+    for i in range(counter - 1, int((counter) / 2), -1):
+        swap(list_of_elevators, i, counter - 1 - i)
     k = 1
-    for j in range(counter, math.ceil(len(list_of_elevators) - counter/2)):
-        swap(list_of_elevators, j, len(list_of_elevators)-k)
+    for j in range(counter, math.ceil(len(list_of_elevators) - counter / 2)):
+        swap(list_of_elevators, j, len(list_of_elevators) - k)
         k = k + 1
+
 
 def swap(list_of_elevators, one, two):
     temp = list_of_elevators[one]
     list_of_elevators[one] = list_of_elevators[two]
     list_of_elevators[two] = temp
+
 
 """
 early_call - call that gonna show first in the scenario
@@ -196,7 +234,6 @@ further_call src And dest is between early_call src-dest road = 2
 further_call src is equal to early_call src or dest = 3
 further_call dest is equal to early_call dest AND src is along the road = 4
 further_call src and dest is equal to early_call src and dest = 5
-
 """
 
 
@@ -211,7 +248,7 @@ def isMergeAble(building, elev: Ex1Objects.Elevator.Elevator, list_of_calls: lis
             further_call = list_of_calls[temp_idx]
 
             if further_call.getAllocatedTo() == -1 and \
-                    early_call.getType() == further_call.getType() and further_call.getDistance() < building.getHeight()*0.5:
+                    early_call.getType() == further_call.getType() and further_call.getDistance() < building.getHeight() * 0.5:
 
                 if (isBetween(early_call.getSrc(), early_call.getDest(),
                               further_call.getSrc()) and early_call.getDest() == further_call.getDest()) \
@@ -227,7 +264,7 @@ def isMergeAble(building, elev: Ex1Objects.Elevator.Elevator, list_of_calls: lis
             further_call = list_of_calls[temp_idx]
 
             if further_call.getAllocatedTo() == -1 and \
-                    early_call.getType() == further_call.getType() and further_call.getDistance() > building.getHeight()*0.25:
+                    early_call.getType() == further_call.getType() and further_call.getDistance() > building.getHeight() * 0.25:
 
                 if (isBetween(early_call.getSrc(), early_call.getDest(),
                               further_call.getSrc()) and early_call.getDest() == further_call.getDest()) \

@@ -8,7 +8,7 @@ class CallForElevator:
         self.dest = int(dest)
         self.state = int(state)
         self.allocatedTo = int(allocatedTo)
-        if (self.dest - self.src > 0):
+        if self.dest - self.src > 0:
             self.type = 1
         else:
             self.type = -1
@@ -22,11 +22,11 @@ class CallForElevator:
 
     # only 0 to 3 numbers is valid!!
     def setState(self, new_status):
-        if (0 <= new_status and new_status <= 3):
+        if 0 <= new_status <= 3:
             self.state = new_status
 
     def getStatus(self):
-        return self.status
+        return self.state
 
     def getSrc(self):
         return self.src
@@ -49,6 +49,26 @@ class CallForElevator:
     def getDistance(self):
         return abs(self.dest - self.src)
 
+    """
+    True if check number is between two others
+    """
+
+    def isContained(self, call_check):
+        if self.getType() == call_check.getType() \
+                and isBetween(self.getSrc(), self.getDest(), call_check.getSrc()) \
+                and isBetween(self.getSrc(), self.getDest(), call_check.getDest()):
+            return True
+        return False
+
     def __str__(self):
         return "Elevator call" + "," + str(self.getStartTime()) + "," + str(self.getSrc()) \
                + "," + str(self.getDest()) + "," + str(self.state) + "," + str(self.allocatedTo)
+
+
+def isBetween(start, stop, check):
+    ans = False
+    if stop <= check <= start:
+        ans = True
+    elif stop >= check >= start:
+        ans = True
+    return ans

@@ -4,6 +4,8 @@ import Ex1Objects.CallForElevator
 import Brain.randomAlgo
 import Brain.BasicGreedAlgo
 import Brain.FlexGreedAlgo
+import Brain.BrainTeamAlgo
+import Brain.DistanceSplitAlgo
 import json
 import csv
 
@@ -36,13 +38,16 @@ def parseCalls(csv_name):
 
 # extract ea CallForElevator as same format to new csv file, with updated allocated elev
 def extractBackToCSV(list_of_calls):
-    f = open("FlexGreedyAlgoReserveSort_a.csv", "w")
+    f = open("outputCalls1.csv", "w")
     # BasicGreedyAlgoNoSort
     # BasicGreedyAlgoSort
     # BasicGreedyAlgoReserveSort
     # FlexGreedyAlgoNoSort
     # FlexGreedyAlgoSort
     # FlexGreedyAlgoReserveSort
+    # FlexGreedyAlgoNoSortWithFixer
+    # FlexGreedyAlgoSortWithFixer
+    # FlexGreedyAlgoReserveSortWithFixer
     for y in range(0, len(list_of_calls) - 1):
         strC = str(list_of_calls[y])
         # print(strC, cList[y].getId())
@@ -65,7 +70,7 @@ our_building = Ex1Objects.Building.Building(Building_dict['_minFloor'], Building
 # construct our algo and let it do our magic xD
 # first_run = Brain.randomAlgo.randomAlgo(our_building)
 # first_run.run()
-greedy_run = Brain.FlexGreedAlgo.FlexGreedAlgo(our_building)
+greedy_run = Brain.BrainTeamAlgo.BrainTeamAlgo(our_building)
 greedy_run.run()
 # ea call in the list_of_calls is allocated to any elev now, we shall extract this data to new csv file!
 extractBackToCSV(list_of_calls)

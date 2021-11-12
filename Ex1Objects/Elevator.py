@@ -13,7 +13,7 @@ class Elevator:
         self.state = 0
         self.currTime = 0.0
 
-    def getID(self):
+    def getId(self):
         return self.id
 
     def getSpeed(self):

@@ -22,7 +22,7 @@ class DistanceSplitAlgo:
     def __init__(self, Building):
         self.building = Building
         # Brain.genericHelpFuncs.sortElevator(self.building.getListOfElevator())
-        Brain.genericHelpFuncs.reserveSortElevator(self.building.getListOfElevator())
+        # Brain.genericHelpFuncs.reserveSortElevator(self.building.getListOfElevator())
         Brain.genericHelpFuncs.specialSortElevator(self.building, self.building.getListOfElevator())
 
         for x in self.building.list_of_elev:
@@ -44,7 +44,7 @@ class DistanceSplitAlgo:
         shall engage the unchoosen calls somehow so...
         use the fixer! for more info, move to Fixer.py file
         """
-        Brain.Fixer.FixerSkelton(list_of_calls, self.building)
+        # Brain.Fixer.FixerSkelton(list_of_calls, self.building)
 
         # Brain.randomAlgo.randomFixer(self.building)
 
@@ -60,11 +60,11 @@ def slowElevProccess(building: Ex1Objects.Building.Building, elev: Ex1Objects.El
             while idx <= idx_30s < len(list_of_calls):
 
                 merged_list = Brain.genericHelpFuncs.isMergeAble(building, elev, list_of_calls, idx, idx_30s)
-                if list_of_calls[idx].getDistance() < building.getHeight() * 0.5 and len(merged_list) > 0:
+                if list_of_calls[idx].getDistance() < building.getHeight() * 1 and len(merged_list) > 0:
 
                     for x in merged_list:
-                        list_of_calls[x].setAllocatedTo(elev.getID())
-                    list_of_calls[idx].setAllocatedTo(elev.getID())
+                        list_of_calls[x].setAllocatedTo(elev.getId())
+                    list_of_calls[idx].setAllocatedTo(elev.getId())
                     delta = Brain.genericHelpFuncs.deltaTime(list_of_calls[idx_origin].getStartTime(),
                                                              list_of_calls[idx].getStartTime())
                     time_end = Brain.genericHelpFuncs.timeToEndTask(elev, list_of_calls[idx].getSrc(),
@@ -81,7 +81,7 @@ def slowElevProccess(building: Ex1Objects.Building.Building, elev: Ex1Objects.El
                 temp_opt_time = 10000
                 while len(list_of_calls) > idx_30s >= idx:
                     if list_of_calls[idx].getAllocatedTo() == -1 and list_of_calls[
-                        idx].getDistance() < building.getHeight() * 0.5:
+                        idx].getDistance() < building.getHeight() * 1:
 
                         temp_call = list_of_calls[idx]
                         temp_call_start_time = temp_call.getStartTime()
@@ -89,13 +89,13 @@ def slowElevProccess(building: Ex1Objects.Building.Building, elev: Ex1Objects.El
                         temp_task_time = Brain.genericHelpFuncs.timeToEndTask(elev, temp_call.getSrc(),
                                                                               temp_call.getDest(), delta, 2)
                         if list_of_calls[
-                            idx].getDistance() < building.getHeight() * 0.5 and temp_opt_time > temp_task_time:
+                            idx].getDistance() < building.getHeight() * 1 and temp_opt_time > temp_task_time:
                             temp_opt_time = temp_task_time
                             idx_opt = idx
                     idx = idx + 1
                     # best mission found, edit it on list_of_calls, also edit elevator currPos for next iterate
 
-                list_of_calls[idx_opt].setAllocatedTo(elev.getID())
+                list_of_calls[idx_opt].setAllocatedTo(elev.getId())
                 elev.setPos(list_of_calls[idx_opt].getDest())
                 idx = Brain.genericHelpFuncs.gimmieIdxEndOfTask(list_of_calls, idx_opt, temp_opt_time)
 
@@ -184,7 +184,7 @@ def fastElevProccess(building, elev: Ex1Objects.Elevator.Elevator, list_of_calls
                     idx_opt = idx
                 idx = idx + 1
             # best mission found, edit it on list_of_calls, also edit elevator currPos for next iterate
-            list_of_calls[idx_opt].setAllocatedTo(elev.getID())
+            list_of_calls[idx_opt].setAllocatedTo(elev.getId())
             elev.setPos(list_of_calls[idx_opt].getDest())
             idx = Brain.genericHelpFuncs.gimmieIdxEndOfTask(list_of_calls, idx_opt, temp_opt_time)
 

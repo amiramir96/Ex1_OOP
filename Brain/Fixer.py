@@ -35,7 +35,7 @@ def FixerSkelton(list_of_calls: list, building):
                 delay = delayTime(elev, a, b, y, list_of_calls)
                 if min_delay > delay:
                     min_delay = delay
-                    fixer_elev_id = elev.getID()
+                    fixer_elev_id = elev.getId()
             # set the best from the worst xD
             c.setAllocatedTo(fixer_elev_id)
 
@@ -50,7 +50,7 @@ this way, we can calculate the delay time that will pop up from pushing 1 more t
 def gimmieCallIdxBefore(elev: Ex1Objects.Elevator.Elevator, curr_idx, cList: list):
     a = curr_idx - 1
     while 0 <= a < curr_idx:
-        if cList[a].getAllocatedTo() != elev.getID():
+        if cList[a].getAllocatedTo() != elev.getId():
             a = a - 1
         else:
             break
@@ -63,7 +63,7 @@ def gimmieCallIdxBefore(elev: Ex1Objects.Elevator.Elevator, curr_idx, cList: lis
 def gimmieCallIdxAfter(elev: Ex1Objects.Elevator.Elevator, curr_idx, cList: list):
     b = curr_idx + 1
     while curr_idx < b < len(cList):
-        if cList[b].getAllocatedTo() != elev.getID():
+        if cList[b].getAllocatedTo() != elev.getId():
             b = b + 1
         else:
             break
