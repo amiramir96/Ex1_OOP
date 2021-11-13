@@ -58,14 +58,12 @@ def containedTime(list_of_calls: list, call: Ex1Objects.CallForElevator.CallForE
 
     # start proccess
     idx = call.getId() + 1
-    # terms
-    # print(elev.getId(), elev.getCurrTime())
+    # terms is:
     while idx < len(list_of_calls) and list_of_calls[idx].getStartTime() <= time_end_call:
         if list_of_calls[idx].getAllocatedTo() == -1 and call.isContained(list_of_calls[idx]):
             # roof_time - higher/equal to that, couldnt stop to take mission
-            roof_time = timeToEndPath(call.getStartTime(), call.getSrc(), list_of_calls[idx].getSrc(), elev) - elev.getTotalDelayTime() - 1
-            # print(roof_time, list_of_calls[idx].getStartTime())
-            if roof_time > list_of_calls[idx].getStartTime():
+            roof_time = timeToEndPath(call.getStartTime(), call.getSrc(), list_of_calls[idx].getSrc(), elev) - 1
+            if roof_time > list_of_calls[idx].getStartTime() and time_end_call < list_of_calls[len(list_of_calls)-1].getStartTime()+120 - elev.getTotalDelayTime()*5:
                 output_list.append(list_of_calls[idx])
         idx = idx + 1
 

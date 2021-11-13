@@ -7,6 +7,23 @@ import Brain.Fixer
 import Brain.randomAlgo
 
 """
+check who is the best elevator for currect call within time to end mission
+return its id and its approximated time
+"""
+
+
+def optimalElevator(list_elevators, call: Ex1Objects.CallForElevator.CallForElevator):
+    opt_time = 2147483647
+    opt_elev = list_elevators[0]
+    for x in list_elevators:
+        temp_time = Brain.genericHelpFuncs.timeToEndCall(call, x)
+        if opt_time > temp_time:
+            opt_time = temp_time
+            opt_elev = x
+    return [opt_elev, opt_time]
+
+
+"""
 will check amount of stops that required to finish the whole list
 list_calls - hold all the CALLFORELEVATORS tasks that we would like to do
 """
@@ -50,22 +67,6 @@ def updateCalls(list_calls: list, elev: Ex1Objects.Elevator.Elevator, time_end_c
 
 
 """
-check who is the best elevator for currect call within time to end mission
-return its id and its approximated time
-"""
-
-
-def optimalElevator(list_elevators, call: Ex1Objects.CallForElevator.CallForElevator):
-    opt_time = 2147483647
-    for x in list_elevators:
-        temp_time = Brain.genericHelpFuncs.timeToEndCall(call, x)
-        if opt_time > temp_time:
-            opt_time = temp_time
-            opt_elev = x
-    return [opt_elev, opt_time]
-
-
-"""
 logic of algorithm:
 run on all calls 
     check if curr call is UNENGAGED (else, just move to next call)
@@ -84,8 +85,6 @@ class BrainTeamAlgo:
             if call.getAllocatedTo() == -1:
                 # opt_elev is LIST! of pair!!! idx 0 = elev opt obj, idx 1 = elev opt time to end Call
                 opt_elev = optimalElevator(self.building.getListOfElevator(), call)
-                print(opt_elev[0].getId(), opt_elev[1])
                 tasks_list = Brain.genericHelpFuncs.containedTime(self.building.getListOfCalls(), call,
                                                                   opt_elev[0], opt_elev[1])
                 updateCalls(tasks_list, opt_elev[0], opt_elev[1])
-                print(opt_elev[0].getId(), opt_elev[1])
