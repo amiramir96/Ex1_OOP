@@ -5,14 +5,31 @@ import math
 
 
 def timeToEndCall(call: Ex1Objects.CallForElevator.CallForElevator, elev: Ex1Objects.Elevator.Elevator):
-    """return time to end call c by elevator e"""
+    """return time to end call c by elev"""
     start = call.getSrc()
     stop = call.getDest()
     curr_pos = elev.getPos()
     no_of_floors = abs(curr_pos - start) + abs(start - stop)
     moving_time = no_of_floors / elev.getSpeed()
     stopping_time = elev.getTotalDelayTime() * 2
-    return elev.getCurrTime() + moving_time + stopping_time
+    if call.getStartTime() < elev.getCurrTime():
+        relevant_curr_time = elev.getCurrTime()
+    else:
+        relevant_curr_time = call.getStartTime()
+    return relevant_curr_time + moving_time + stopping_time
+
+
+def timeToEndPath(time, start, stop, elev: Ex1Objects.Elevator.Elevator):
+    """ return time to end path from e.position -> start floor -> stop floor by elev"""
+    curr_pos = elev.getPos()
+    no_of_floors = abs(curr_pos - start) + abs(start - stop)
+    moving_time = no_of_floors + elev.getSpeed()
+    stopping_time = elev.getTotalDelayTime() * 2
+    if time < elev.getCurrTime():
+        relevant_curr_time = elev.getCurrTime()
+    else:
+        relevant_curr_time = time
+    return relevant_curr_time + moving_time + stopping_time
 
 
 def timeTravelNoDelay(start, stop, elev: Ex1Objects.Elevator.Elevator):
@@ -42,13 +59,12 @@ def containedTime(list_of_calls: list, call: Ex1Objects.CallForElevator.CallForE
     # start proccess
     idx = call.getId() + 1
     # terms
-    print(elev.getId(), elev.getCurrTime())
+    # print(elev.getId(), elev.getCurrTime())
     while idx < len(list_of_calls) and list_of_calls[idx].getStartTime() <= time_end_call:
         if list_of_calls[idx].getAllocatedTo() == -1 and call.isContained(list_of_calls[idx]):
             # roof_time - higher/equal to that, couldnt stop to take mission
-            roof_time = elev.getTotalDelayTime() - 1 + timeTravelNoDelay(call.getSrc(), list_of_calls[idx].getSrc(),
-                                                                         elev)
-            print(roof_time, list_of_calls[idx].getStartTime())
+            roof_time = timeToEndPath(call.getStartTime(), call.getSrc(), list_of_calls[idx].getSrc(), elev) - elev.getTotalDelayTime() - 1
+            # print(roof_time, list_of_calls[idx].getStartTime())
             if roof_time > list_of_calls[idx].getStartTime():
                 output_list.append(list_of_calls[idx])
         idx = idx + 1

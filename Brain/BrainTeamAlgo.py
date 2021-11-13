@@ -22,7 +22,7 @@ def howManyStops(list_calls: list):
     # we only gonna check for extra stops (more than 2)
     stops_counter = -1
     for i in range(0, len(stops_list) - 1):
-        if stops_list[i] != stops_list[i + 1]:
+        if stops_list[i] != stops_list[i+1]:
             stops_counter = stops_counter + 1
     return stops_counter
 
@@ -44,9 +44,9 @@ def updateCalls(list_calls: list, elev: Ex1Objects.Elevator.Elevator, time_end_c
     for x in list_calls:
         x.setAllocatedTo(elev.getId())
     stops_counter = howManyStops(list_calls)
-    Total_calls_time = time_end_call + elev.getTotalDelayTime() * stops_counter
+    total_calls_time = time_end_call + elev.getTotalDelayTime() * stops_counter
     elev.setPos(list_calls[0].getDest())
-    elev.setCurrTime(Total_calls_time)
+    elev.setCurrTime(total_calls_time)
 
 
 """
@@ -56,8 +56,7 @@ return its id and its approximated time
 
 
 def optimalElevator(list_elevators, call: Ex1Objects.CallForElevator.CallForElevator):
-    opt_time = Brain.genericHelpFuncs.timeToEndCall(call, list_elevators[0])
-    opt_elev = list_elevators[0]
+    opt_time = 2147483647
     for x in list_elevators:
         temp_time = Brain.genericHelpFuncs.timeToEndCall(call, x)
         if opt_time > temp_time:
@@ -85,6 +84,8 @@ class BrainTeamAlgo:
             if call.getAllocatedTo() == -1:
                 # opt_elev is LIST! of pair!!! idx 0 = elev opt obj, idx 1 = elev opt time to end Call
                 opt_elev = optimalElevator(self.building.getListOfElevator(), call)
+                print(opt_elev[0].getId(), opt_elev[1])
                 tasks_list = Brain.genericHelpFuncs.containedTime(self.building.getListOfCalls(), call,
                                                                   opt_elev[0], opt_elev[1])
                 updateCalls(tasks_list, opt_elev[0], opt_elev[1])
+                print(opt_elev[0].getId(), opt_elev[1])
