@@ -3,16 +3,13 @@ import Ex1Objects.Elevator
 import Ex1Objects.CallForElevator
 import random
 import Brain.genericHelpFuncs
-import Brain.Fixer
-import Brain.randomAlgo
-
-"""
-check who is the best elevator for currect call within time to end mission
-return its id and its approximated time
-"""
 
 
 def optimalElevator(list_elevators, call: Ex1Objects.CallForElevator.CallForElevator):
+    """
+    check what elevator is best for given call by time to end mission
+    return best elevator id and its approximated finish time
+    """
     opt_time = 2147483647
     opt_elev = list_elevators[0]
     for x in list_elevators:
@@ -85,6 +82,6 @@ class BrainTeamAlgo:
             if call.getAllocatedTo() == -1:
                 # opt_elev is LIST! of pair!!! idx 0 = elev opt obj, idx 1 = elev opt time to end Call
                 opt_elev = optimalElevator(self.building.getListOfElevator(), call)
-                tasks_list = Brain.genericHelpFuncs.containedTime(self.building.getListOfCalls(), call,
-                                                                  opt_elev[0], opt_elev[1])
+                tasks_list = Brain.genericHelpFuncs.containedCalls(self.building.getListOfCalls(), call,
+                                                                   opt_elev[0], opt_elev[1])
                 updateCalls(tasks_list, opt_elev[0], opt_elev[1])
