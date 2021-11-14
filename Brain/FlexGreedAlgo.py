@@ -21,6 +21,7 @@ class FlexGreedAlgo:
         self.building = Building
         Brain.genericHelpFuncs.sortElevator(self.building.getListOfElevator())
         # Brain.genericHelpFuncs.reserveSortElevator(self.building.getListOfElevator())
+        # Brain.genericHelpFuncs.specialSortElevator(self.building, self.building.getListOfElevator())
 
     def run(self):
         list_of_calls = self.building.getListOfCalls()

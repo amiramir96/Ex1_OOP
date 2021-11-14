@@ -39,7 +39,7 @@ def howManyStops(list_calls: list):
     # we only gonna check for extra stops (more than 2)
     stops_counter = -1
     for i in range(0, len(stops_list) - 1):
-        if stops_list[i] != stops_list[i+1]:
+        if stops_list[i] != stops_list[i + 1]:
             stops_counter = stops_counter + 1
     return stops_counter
 
@@ -85,6 +85,6 @@ class BrainTeamAlgo:
             if call.getAllocatedTo() == -1:
                 # opt_elev is LIST! of pair!!! idx 0 = elev opt obj, idx 1 = elev opt time to end Call
                 opt_elev = optimalElevator(self.building.getListOfElevator(), call)
-                tasks_list = Brain.genericHelpFuncs.containedTime(self.building.getListOfCalls(), call,
-                                                                  opt_elev[0], opt_elev[1])
+                tasks_list = Brain.genericHelpFuncs.containedCalls(self.building, self.building.getListOfCalls(), call,
+                                                                   opt_elev[0], opt_elev[1])
                 updateCalls(tasks_list, opt_elev[0], opt_elev[1])

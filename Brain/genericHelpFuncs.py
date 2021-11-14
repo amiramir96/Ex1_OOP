@@ -49,8 +49,8 @@ this calls shall stand with the next terms:
 """
 
 
-def containedTime(building, list_of_calls: list, call: Ex1Objects.CallForElevator.CallForElevator,
-                  elev: Ex1Objects.Elevator.Elevator, time_end_call: float):
+def containedCalls(building, list_of_calls: list, call: Ex1Objects.CallForElevator.CallForElevator,
+                   elev: Ex1Objects.Elevator.Elevator, time_end_call: float):
     output_list = [call]
     # thats the last call on the list, proccess is uneedded
     if call.getId == len(list_of_calls) - 1:

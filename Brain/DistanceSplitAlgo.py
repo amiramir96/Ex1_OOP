@@ -46,7 +46,7 @@ class DistanceSplitAlgo:
         """
         # Brain.Fixer.FixerSkelton(list_of_calls, self.building)
 
-        # Brain.randomAlgo.randomFixer(self.building)
+        Brain.randomAlgo.randomFixer(self.building)
 
 
 def slowElevProccess(building: Ex1Objects.Building.Building, elev: Ex1Objects.Elevator.Elevator, list_of_calls: list):
