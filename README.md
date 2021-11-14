@@ -12,8 +12,8 @@ this algorithm will combine several principles togheter:
 # structre of the algorithm:
 in this assigment we will create the following packages of files:
 
-|                                                   package name:      Ex1Objects                                                                                            |
-|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+|   package name: |                                                     Ex1Objects                                                                                           |
+|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
 | file name       |      description                                                                                                                                         |     
 | CallForElevator |       represent a call for an elevator, will hold all the parameters which we get as input from our school tester and some inner functions that helps to |     |                 |         orginize better the data of the call                                                                                                             | 
 |    Elevator     |          represent a elevator, will hold all the parameters and data we shall need to maintain and operating an elevator                                 |
