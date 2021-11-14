@@ -23,7 +23,7 @@ def timeToEndPath(time, start, stop, elev: Ex1Objects.Elevator.Elevator):
     """ return time to end path from e.position -> start floor -> stop floor by elev"""
     curr_pos = elev.getPos()
     no_of_floors = abs(curr_pos - start) + abs(start - stop)
-    moving_time = no_of_floors + elev.getSpeed()
+    moving_time = no_of_floors / elev.getSpeed()
     stopping_time = elev.getTotalDelayTime() * 2
     if time < elev.getCurrTime():
         relevant_curr_time = elev.getCurrTime()
@@ -49,7 +49,7 @@ this calls shall stand with the next terms:
 """
 
 
-def containedTime(list_of_calls: list, call: Ex1Objects.CallForElevator.CallForElevator,
+def containedTime(building, list_of_calls: list, call: Ex1Objects.CallForElevator.CallForElevator,
                   elev: Ex1Objects.Elevator.Elevator, time_end_call: float):
     output_list = [call]
     # thats the last call on the list, proccess is uneedded
@@ -59,11 +59,11 @@ def containedTime(list_of_calls: list, call: Ex1Objects.CallForElevator.CallForE
     # start proccess
     idx = call.getId() + 1
     # terms is:
-    while idx < len(list_of_calls) and list_of_calls[idx].getStartTime() <= time_end_call:
+    while idx < len(list_of_calls) and list_of_calls[idx].getStartTime() <= time_end_call and len(output_list) <= building.getHeight()/(len(building.getListOfElevator())+building.getAvgSpeed()):
         if list_of_calls[idx].getAllocatedTo() == -1 and call.isContained(list_of_calls[idx]):
             # roof_time - higher/equal to that, couldnt stop to take mission
             roof_time = timeToEndPath(call.getStartTime(), call.getSrc(), list_of_calls[idx].getSrc(), elev) - 1
-            if roof_time > list_of_calls[idx].getStartTime() and time_end_call < list_of_calls[len(list_of_calls)-1].getStartTime()+120 - elev.getTotalDelayTime()*5:
+            if roof_time > list_of_calls[idx].getStartTime():
                 output_list.append(list_of_calls[idx])
         idx = idx + 1
 
