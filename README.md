@@ -6,11 +6,12 @@ in this assigment we are required to: get B.json, Calls.csv files which represen
 
 # Algorithm logic
 the algorithm will combine several principles togheter:  
+<o1>
   1. Greedy algorithm: given a call, the elevator which will end the call as fast as possible will be choosen.  
   2. Consistency: when a call is allocated to an elevator - it won't be allocated again. furthermore, the call wont be checked again.  
   3. Cost-Benefit tradeoff: when certain conditions apply - we will "merge" several calls, which means - the chosen elevator will complete multiple calls at once.  
   however, we won't merge many calls together to avoid streching the original call for too long.
-
+<o1>
 # Algorithm overview
 the algorithm work consistenly by the following steps:
   1- get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object as well
