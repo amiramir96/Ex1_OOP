@@ -43,7 +43,7 @@ Default name for output is "outputCalls1.csv", custom names can be created insid
 # Results
 this is the best results that we were able to gain:
 |Case |Building|Uncompleted calls| average waiting time per call|
-|--------------------------------|------------------------------|
+|-----|--------|-----------------|------------------------------|
 |a    |B1.json |                 |                              |
 |a    |B2.json |                 |                              |
 |a    |B3.json |                 |                              |
