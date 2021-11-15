@@ -4,7 +4,15 @@ Object Oriented Programming exercise 1
 in this assigment we were required to create an offline algorithm and code it in python for smart elevator system in a building, every mission for moving a given elevator from floor x to y will be named as call. 
 in this assigment we are required to: get B.json, Calls.csv files which represents the building and all the calls for the given scenario, in return, the algo have to output a calls.csv file with elevator allocated to each call in the last column.
 
-
+# Algorithm logic
+the algorithm will combine several principles togheter:  
+<o1>
+  <li> Greedy algorithm: given a call, the elevator which will end the call as fast as possible will be choosen.</li>  
+  <li> Consistency: when a call is allocated to an elevator - it won't be allocated again. furthermore, the call wont be checked again.</li>  
+  <li> Cost-Benefit tradeoff: when certain conditions apply - we will "merge" several calls, which means - the chosen elevator will complete multiple calls at once.</li>  
+  however, we won't merge many calls together to avoid streching the original call for too long.</li>
+</o1>
+  
 # Algorithm Overview
   
 the algorithm work consistenly by the following steps:
