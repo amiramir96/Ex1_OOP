@@ -29,7 +29,7 @@ in this assigment we will create the following packages of files:
 |MergeAndUpdateFuncs |         holds functions that supports the Merge and Updating(elevator and calls parms) functions                                                      |
 |TimeAndPathFuncs    |          holds functions that calculate path and time period of tasks for elevators                                                                   |
 
-The main.py file is the file that activates our algorithm.  
+The Ex1.py file is the file that activates our algorithm. (the main function is there)  
 this file will build the building and allocate elevators to every call in a given csv file, outputing an updated file.
 Running the algorithm example:
 ```
