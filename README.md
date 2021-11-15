@@ -4,22 +4,37 @@ Object Oriented Programming exercise 1
 in this assigment we were required to create an offline algorithm and code it in python for smart elevator system in a building, every mission for moving a given elevator from floor x to y will be named as call. 
 in this assigment we are required to: get B.json, Calls.csv files which represents the building and all the calls for the given scenario, in return, the algo have to output a calls.csv file with elevator allocated to each call in the last column.
 
-# algorithm logic
+# Algorithm logic
 the algorithm will combine several principles togheter:  
   1. Greedy algorithm: given a call, the elevator which will end the call as fast as possible will be choosen.  
   2. Consistency: when a call is allocated to an elevator - it won't be allocated again. furthermore, the call wont be checked again.  
   3. Cost-Benefit tradeoff: when certain conditions apply - we will "merge" several calls, which means - the chosen elevator will complete multiple calls at once.  
   however, we won't merge many calls together to avoid streching the original call for too long.
 
-# structre of the project code
+# Algorithm overview
+the algorithm work consistenly by the following steps:
+  1- get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object as well
+  2- the algorithm will scan step by step the list_of_calls of the scenario, from the nearest to the most future one 
+  3- bid proccess - let alpha be a curr call that the algorithm check which is NOT allocated to any elevator yet(if its already allocated, the algo will jump to next call in the list), the algo will use optimal_elevator function that will return the elevator that will end the call as soon as possible compare to the other elevators which will be choosen
+  4- merge check proccess - the choosen elevator will be sent for the merge proccess check via the calls_contained function that will return a list of all the calls that contains in the superior call - alpha, contain terms for is: (let beta be a given call that we check) 
+        a. the potential future return list size is less from a parameter depends on building height, elev spped, elev delay times
+        b. beta startTime is lower from the time that will take to the elevator to complete alpha task
+        c. time that takes to elevator to move from elev.pos -> alpha.srcFloor -> beta.srcFloor is higher than beta.startTime
+        d. alpha.type of task is same as beta.type
+        e. beta.src and bet.dest floors is layin along the Path (or equal to the path) of alpha (path is srcFloor to destFloor)
+  5- the calls that have to be engaged along the same path via the returned list will edit to be allocated by the choosen elevator (section 3)
+  6- the choosen elevator parameters of currect Floor and currect Time will be edit to: elevator.currFloor <- alpha.destFloor , elevator.currTime <- time_to_end_alpha_task + (amount_of_stops * elevator.delayTime) 
+  7- continue to the next call in list_of_calls       
+        
+# Structre of the project code
 in this assigment we will create the following packages of files:
 
 |   package name: |                                                     **Ex1Objects**                                                                                       |
 |-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **file name**   |      **description**                                                                                                                                     |     
+| **file name**   |      **description**                                                                                                                                     |   
 | CallForElevator |      represents a call for an elevator, will hold all the parameters which we get as input from our school tester and some inner functions that helps to |    |                 |         orginize better the data of the call                                                                                                             | 
-|    Elevator     |        represents an elevator, will hold all the parameters and data we will need to maintain and operate an elevator                                 |
-|   Building      |        represents a building, will hold list of elevators, list of calls and the basic parameters of building (aka min and max floor)              | 
+|    Elevator     |        represents an elevator, will hold all the parameters and data we will need to maintain and operate an elevator                                    |
+|   Building      |        represents a building, will hold list of elevators, list of calls and the basic parameters of building (aka min and max floor)                    | 
 
 
 |   package name:    |                                                  **Brain**                                                                                            |
