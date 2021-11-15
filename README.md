@@ -20,7 +20,7 @@ the algorithm work consistenly by the following steps:
   1. get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object as well 
   2. the algorithm will scan step by step the list_of_calls of the scenario, from the nearest to the most future one 
   3. bid proccess - let alpha be a curr call that the algorithm check which is NOT allocated to any elevator yet(if its already allocated, the algo will jump to next call in the list), the algo will use optimal_elevator function that will return the elevator that will end the call as soon as possible compare to the other elevators which will be choosen 
-  4. merge check proccess - the choosen elevator will be sent for the merge proccess check via the calls_contained function that will return a list of all the calls that contains in the superior call - alpha, contain terms for is: (let beta be a given call that we check)<br>  
+  4. merge check proccess - the choosen elevator will be sent for the merge proccess check via the calls_contained function that will return a list of all the calls that contains in the superior call - alpha, contain terms for is: (let beta be a given call that we check)
             a. the potential future return list size is less from a parameter depends on building height, elev spped, elev delay times <br>
             b. beta startTime is lower from the time that will take to the elevator to complete alpha task  <br>
             c. time that takes to elevator to move from elev.pos -> alpha.srcFloor -> beta.srcFloor is higher than beta.startTime <br>
