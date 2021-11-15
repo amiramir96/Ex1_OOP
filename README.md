@@ -34,9 +34,11 @@ there is also Ex1_checker_V1.2_obf.jar which simulates the elevator system movin
 this project is tested by unitest libary, the tests can be run by IDE workspace. 
 the package name Tests hold all the tests files, which tests ea every object and function that gonna be used along the algorithm project run (the main of them mentioned above).
 
-# Running the simulation
-**אורי להשלמתך**
-איך להריץ את הסימולציה
+# Running the simulation 
+Run the Main.py file in a directory containing 'Brain', 'Ex1Objects', relevant Building json and csv with calls.  
+You will be asked to provide the names of the relevant json and csv files.  
+The csv with the results (same calls but allocated to elevators) will be created in the directory.  
+Default name for output is "outputCalls1.csv", custom names can be created inside main.py.  
 
 # Results
 this is the best results that we were able to gain:
@@ -61,13 +63,13 @@ this is the best results that we were able to gain:
 
 # Assigment instructions
 
-project files:
-https://github.com/amiramir96/Ex1_OOP
-reporting form:
-https://docs.google.com/forms/d/e/1FAIpQLSffojCP9ftLSlk58_opDf-OpcLXvmuYzoQ3N_EQGtfozXjfjA/viewform?usp=sf_link
-reported results by students:
-https://docs.google.com/spreadsheets/d/1fyFWvU_8d8UeaiUdyDujfgvt2dMs2mzzLd9QgUb33Wc/edit?usp=sharing
-link to our course teacher assigment github:
-https://github.com/benmoshe/OOP_2021/tree/main/Assignments/Ex1
+project files:  
+https://github.com/amiramir96/Ex1_OOP  
+reporting form:  
+https://docs.google.com/forms/d/e/1FAIpQLSffojCP9ftLSlk58_opDf-OpcLXvmuYzoQ3N_EQGtfozXjfjA/viewform?usp=sf_link  
+reported results by students:  
+https://docs.google.com/spreadsheets/d/1fyFWvU_8d8UeaiUdyDujfgvt2dMs2mzzLd9QgUb33Wc/edit?usp=sharing  
+link to our course teacher assigment github:  
+https://github.com/benmoshe/OOP_2021/tree/main/Assignments/Ex1  
 
 the project designed and created by Amir.S and Ori.D
