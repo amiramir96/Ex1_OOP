@@ -88,9 +88,9 @@ this is the best results that we were able to gain:
 |c    |B4.json |       2          |            176                  |
 |c    |B5.json |       0          |               41                | 
 |c    |B9.json |       0          |               72                |
-|d    |B4.json |       8          |             185                 |
-|d    |B5.json |       0          |               44                |
-|d    |B9.json |       0          |               67                |
+|d    |B4.json |       0          |             183                 |
+|d    |B5.json |       0          |               41                |
+|d    |B9.json |       0          |               70                |
 |g    |B7.json |       19         |               202               |
 
 little nore - B9 is building of stage 9 from Ex0 (similiar to B5 but with some slower elevators), B7 is building of stage 7 from Ex0 and case g is same as stage 7 case of Ex0
