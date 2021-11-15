@@ -22,10 +22,10 @@ class OptimalElevator_test(TestCase):
     listE3 = [e1, e2]
 
     def test_optimal_elevator(self):
-        self.assertEqual(BrainTeamAlgo.optimalElevator(self.listE1, self.c0), [self.e0, 34.0], "bad0")
-        self.assertEqual(BrainTeamAlgo.optimalElevator(self.listE2, self.c0), [self.e2, 24.8], "bad0.1")
-        self.assertAlmostEqual(BrainTeamAlgo.optimalElevator(self.listE2, self.c1), [self.e2, 37.599999999999994], None,"bad1", 0.1)
-        self.assertAlmostEqual(BrainTeamAlgo.optimalElevator(self.listE2, self.c2), [self.e2, 47.629999999999995], None, "bad2", 0.1)
-        self.assertEqual(BrainTeamAlgo.optimalElevator(self.listE3, self.c3), [self.e2, 61.44], "bad3")
-        self.assertEqual(BrainTeamAlgo.optimalElevator(self.listE3, self.c4), [self.e2, 69.13], "bad4")
-        self.assertEqual(BrainTeamAlgo.optimalElevator(self.listE3, self.c5), [self.e2, 75.61], "bad5")
+        self.assertEqual(BrainTeamAlgo.optimal_elevator(self.listE1, self.c0), [self.e0, 34.0], "bad0")
+        self.assertEqual(BrainTeamAlgo.optimal_elevator(self.listE2, self.c0), [self.e2, 24.8], "bad0.1")
+        self.assertAlmostEqual(BrainTeamAlgo.optimal_elevator(self.listE2, self.c1), [self.e2, 37.599999999999994], None, "bad1", 0.1)
+        self.assertAlmostEqual(BrainTeamAlgo.optimal_elevator(self.listE2, self.c2), [self.e2, 47.629999999999995], None, "bad2", 0.1)
+        self.assertEqual(BrainTeamAlgo.optimal_elevator(self.listE3, self.c3), [self.e2, 61.44], "bad3")
+        self.assertEqual(BrainTeamAlgo.optimal_elevator(self.listE3, self.c4), [self.e2, 69.13], "bad4")
+        self.assertEqual(BrainTeamAlgo.optimal_elevator(self.listE3, self.c5), [self.e2, 75.61], "bad5")

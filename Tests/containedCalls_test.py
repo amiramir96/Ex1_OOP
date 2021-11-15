@@ -26,9 +26,9 @@ class containedCalls_test(TestCase):
     building1 = Building.Building(-2, 10, listE1, listC1)
 
     def test_contained_calls(self):
-        self.assertEqual(genericHelpFuncs.containedCalls(self.building1, self.listC1, self.c0, self.e0, 44.83),
+        self.assertEqual(genericHelpFuncs.contained_calls(self.building1, self.listC1, self.c0, self.e0, 44.83),
                          [self.c0],"second check is failed, something goes wrong with bdikat Shfiut")
-        self.assertEqual(genericHelpFuncs.containedCalls(self.building1, self.listC2, self.c0, self.e0, 44.83),
+        self.assertEqual(genericHelpFuncs.contained_calls(self.building1, self.listC2, self.c0, self.e0, 44.83),
                          [self.c0, self.c2, self.c3],"second check is failed, something goes wrong with upper path")
-        self.assertEqual(genericHelpFuncs.containedCalls(self.building1, self.listC2, self.c4, self.e0, 72.86),
+        self.assertEqual(genericHelpFuncs.contained_calls(self.building1, self.listC2, self.c4, self.e0, 72.86),
                          [self.c4, self.c5, self.c6, self.c11],"third check is failed, something goes wrong with down path")

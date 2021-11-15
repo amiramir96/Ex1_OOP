@@ -1,61 +1,62 @@
 class Elevator:
-#   state: UP=1 DOWN=-1 idle(LEVER)=0
-    def __init__(self, id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime):
+    def __init__(self, id, speed, min_floor, max_floor, close_time, open_time, start_time, stop_time):
         self.id = id
         self.speed = speed
-        self.minFloor = minFloor
-        self.maxFloor = maxFloor
-        self.closeTime = closeTime
-        self.openTime = openTime
-        self.startTime = startTime
-        self.stopTime = stopTime
+        self.minFloor = min_floor
+        self.maxFloor = max_floor
+        self.closeTime = close_time
+        self.openTime = open_time
+        self.startTime = start_time
+        self.stopTime = stop_time
         self.currPos = 0
+        #   state: UP=1 DOWN=-1 LEVEL(idle)=0
         self.state = 0
         self.currTime = 0.0
 
-    def getId(self):
+    def get_id(self):
         return self.id
 
-    def getSpeed(self):
+    def get_speed(self):
         return self.speed
 
-    def getMinFloor(self):
+    def get_min_floor(self):
         return self.minFloor
 
-    def getMaxFloor(self):
+    def get_max_floor(self):
         return self.maxFloor
 
-    def getCloseTime(self):
+    def get_close_time(self):
         return self.closeTime
 
-    def getOpenTime(self):
+    def get_open_time(self):
         return self.openTime
 
-    def getStopTime(self):
+    def get_stop_time(self):
         return self.stopTime
 
-    def getStartTime(self):
+    def get_start_time(self):
         return self.startTime
 
-    def getPos(self):
+    def get_pos(self):
         return self.currPos
 
-    def setPos(self, floor):
+    def set_pos(self, floor):
         self.currPos = floor
 
-    def getState(self):
+    def get_state(self):
         return self.state
 
-    def getTotalDelayTime(self):
+    def get_total_delay_time(self):
         return self.startTime+self.stopTime+self.openTime+self.closeTime
 
-    def getCurrTime(self):
+    def get_curr_time(self):
         return self.currTime
 
-    def setCurrTime(self, time):
+    def set_curr_time(self, time):
         self.currTime = time
 
     def __str__(self):
-        return ""+str(self.id)+","+str(self.speed)+","+str(self.minFloor)+","+str(self.maxFloor)+","+str(self.closeTime)\
-               +","+str(self.openTime)+","+str(self.startTime)+","+str(self.stopTime)+","+str(self.getPos())\
-               +","+str(self.state)
+        return "" + str(self.id) + "," + str(self.speed) + "," + str(self.minFloor) + ","\
+               + str(self.maxFloor) + "," + str(self.closeTime) + "," + str(self.openTime)\
+               + "," + str(self.startTime) + "," + str(self.stopTime) + "," + str(self.get_pos())\
+               + "," + str(self.state)

@@ -28,51 +28,51 @@ class Building_test(TestCase):
     building3 = Building.Building(-2, 10, listE3, listC3)
 
     def test_get_min_floor(self):
-        self.assertEqual(self.building1.getMinFloor(), 1, "fail min1")
-        self.assertEqual(self.building2.getMinFloor(), -2, "fail min2")
-        self.assertEqual(self.building3.getMinFloor(), 0, "fail min3")
+        self.assertEqual(self.building1.get_min_floor(), 1, "fail min1")
+        self.assertEqual(self.building2.get_min_floor(), -2, "fail min2")
+        self.assertEqual(self.building3.get_min_floor(), 0, "fail min3")
 
     def test_get_max_floor(self):
-        self.assertEqual(self.building1.getMaxFloor(), 2, "fail max1")
-        self.assertEqual(self.building2.getMaxFloor(), 10, "fail max2")
-        self.assertEqual(self.building3.getMaxFloor(), 9, "fail max3")
+        self.assertEqual(self.building1.get_max_floor(), 2, "fail max1")
+        self.assertEqual(self.building2.get_max_floor(), 10, "fail max2")
+        self.assertEqual(self.building3.get_max_floor(), 9, "fail max3")
 
     def test_get_number_of_elevetors(self):
-        self.assertEqual(self.building1.getNumberOfElevetors(), 1, "fail numE1")
-        self.assertEqual(self.building2.getNumberOfElevetors(), 4, "fail numE2")
-        self.assertEqual(self.building3.getNumberOfElevetors(), 2, "fail numE3")
+        self.assertEqual(self.building1.get_number_of_elevetors(), 1, "fail numE1")
+        self.assertEqual(self.building2.get_number_of_elevetors(), 4, "fail numE2")
+        self.assertEqual(self.building3.get_number_of_elevetors(), 2, "fail numE3")
 
     def test_get_list_of_elevator(self):
-        self.assertEqual(self.building1.getListOfElevator(), self.listE1, "fail listE1")
-        self.assertEqual(self.building2.getListOfElevator(), self.listE2, "fail listE2")
-        self.assertEqual(self.building3.getListOfElevator(), self.listE3, "fail listE3")
+        self.assertEqual(self.building1.get_list_of_elevator(), self.listE1, "fail listE1")
+        self.assertEqual(self.building2.get_list_of_elevator(), self.listE2, "fail listE2")
+        self.assertEqual(self.building3.get_list_of_elevator(), self.listE3, "fail listE3")
 
     def test_get_elevator(self):
-        self.assertEqual(self.building1.getElevator(0), self.e0, "fail getE0")
-        self.assertEqual(self.building2.getElevator(3), self.e3, "fail getE1")
-        self.assertEqual(self.building3.getElevator(1), self.e2, "fail getE2")
+        self.assertEqual(self.building1.get_elevator(0), self.e0, "fail getE0")
+        self.assertEqual(self.building2.get_elevator(3), self.e3, "fail getE1")
+        self.assertEqual(self.building3.get_elevator(1), self.e2, "fail getE2")
 
     def test_get_list_of_calls(self):
-        self.assertEqual(self.building1.getListOfCalls(), self.listC1, "fail ListC1")
-        self.assertEqual(self.building2.getListOfCalls(), self.listC2, "fail ListC2")
-        self.assertEqual(self.building3.getListOfCalls(), self.listC3, "fail ListC3")
+        self.assertEqual(self.building1.get_list_of_calls(), self.listC1, "fail ListC1")
+        self.assertEqual(self.building2.get_list_of_calls(), self.listC2, "fail ListC2")
+        self.assertEqual(self.building3.get_list_of_calls(), self.listC3, "fail ListC3")
 
     def test_get_call(self):
-        self.assertEqual(self.building1.getCall(0), self.c0, "fail getC0")
-        self.assertEqual(self.building2.getCall(2), self.c2, "fail getC3")
-        self.assertEqual(self.building3.getCall(1), self.c4, "fail getC2")
+        self.assertEqual(self.building1.get_call(0), self.c0, "fail getC0")
+        self.assertEqual(self.building2.get_call(2), self.c2, "fail getC3")
+        self.assertEqual(self.building3.get_call(1), self.c4, "fail getC2")
 
     def test_get_number_of_calls(self):
-        self.assertEqual(self.building1.getNumberOfCalls(), 1, "fail length LC1")
-        self.assertEqual(self.building2.getNumberOfCalls(), 6, "fail length LC2")
-        self.assertEqual(self.building3.getNumberOfCalls(), 3, "fail length LC3")
+        self.assertEqual(self.building1.get_number_of_calls(), 1, "fail length LC1")
+        self.assertEqual(self.building2.get_number_of_calls(), 6, "fail length LC2")
+        self.assertEqual(self.building3.get_number_of_calls(), 3, "fail length LC3")
 
     def test_get_avg_speed(self):
-        self.assertEqual(self.building1.getAvgSpeed(), 1, "fail AvgS1")
-        self.assertEqual(self.building2.getAvgSpeed(), 1.5, "fail AvgS2")
-        self.assertEqual(self.building3.getAvgSpeed(), 2, "fail AvgS3")
+        self.assertEqual(self.building1.get_avg_speed(), 1, "fail AvgS1")
+        self.assertEqual(self.building2.get_avg_speed(), 1.5, "fail AvgS2")
+        self.assertEqual(self.building3.get_avg_speed(), 2, "fail AvgS3")
 
     def test_get_height(self):
-        self.assertEqual(self.building1.getHeight(), 1, "fail Height1")
-        self.assertEqual(self.building2.getHeight(), 12, "fail Height2")
-        self.assertEqual(self.building3.getHeight(), 9, "fail Height3")
+        self.assertEqual(self.building1.get_height(), 1, "fail Height1")
+        self.assertEqual(self.building2.get_height(), 12, "fail Height2")
+        self.assertEqual(self.building3.get_height(), 9, "fail Height3")

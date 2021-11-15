@@ -17,10 +17,10 @@ class timeToEndPath_test(TestCase):
     e2 = Elevator.Elevator(2, 2.5, -10, 100, 2, 2, 1, 1)
 
     def test_time_to_end_path(self):
-        self.assertEqual(genericHelpFuncs.timeToEndPath(12.0, self.c0.getSrc(), self.c0.getDest(), self.e0), 34.0, "bad0")
-        self.assertEqual(genericHelpFuncs.timeToEndPath(12.0, self.c0.getSrc(), self.c0.getDest(), self.e2), 24.8, "bad0.1")
-        self.assertAlmostEqual(genericHelpFuncs.timeToEndPath(25.2, self.c1.getSrc(), self.c1.getDest(), self.e2), 37.6, None, "bad1", 0.1)
-        self.assertAlmostEqual(genericHelpFuncs.timeToEndPath(30.83, self.c2.getSrc(), self.c2.getDest(), self.e2), 47.62, None, "bad2", 0.1)
-        self.assertEqual(genericHelpFuncs.timeToEndPath(45.44, self.c3.getSrc(), self.c3.getDest(), self.e2), 61.44, "bad3")
-        self.assertEqual(genericHelpFuncs.timeToEndPath(51.53, self.c4.getSrc(), self.c4.getDest(), self.e2), 69.13, "bad4")
-        self.assertEqual(genericHelpFuncs.timeToEndPath(59.61, self.c5.getSrc(), self.c5.getDest(), self.e2), 75.61, "bad5")
+        self.assertEqual(genericHelpFuncs.time_to_end_path(12.0, self.c0.get_src(), self.c0.get_dest(), self.e0), 34.0, "bad0")
+        self.assertEqual(genericHelpFuncs.time_to_end_path(12.0, self.c0.get_src(), self.c0.get_dest(), self.e2), 24.8, "bad0.1")
+        self.assertAlmostEqual(genericHelpFuncs.time_to_end_path(25.2, self.c1.get_src(), self.c1.get_dest(), self.e2), 37.6, None, "bad1", 0.1)
+        self.assertAlmostEqual(genericHelpFuncs.time_to_end_path(30.83, self.c2.get_src(), self.c2.get_dest(), self.e2), 47.62, None, "bad2", 0.1)
+        self.assertEqual(genericHelpFuncs.time_to_end_path(45.44, self.c3.get_src(), self.c3.get_dest(), self.e2), 61.44, "bad3")
+        self.assertEqual(genericHelpFuncs.time_to_end_path(51.53, self.c4.get_src(), self.c4.get_dest(), self.e2), 69.13, "bad4")
+        self.assertEqual(genericHelpFuncs.time_to_end_path(59.61, self.c5.get_src(), self.c5.get_dest(), self.e2), 75.61, "bad5")

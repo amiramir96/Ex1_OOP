@@ -31,9 +31,9 @@ class howManyStops_test(TestCase):
     building3 = Building.Building(-2, 10, listE3, listC3)
 
     def test_how_many_stops(self):
-        self.assertEqual(BrainTeamAlgo.howManyStops(self.listC1), 0, "bad1")
-        self.assertEqual(BrainTeamAlgo.howManyStops(self.listC2), 9, "bad2")
-        self.assertEqual(BrainTeamAlgo.howManyStops(self.listC3), 4, "bad3")
-        self.assertEqual(BrainTeamAlgo.howManyStops(self.listC4), 4, "bad4")
+        self.assertEqual(BrainTeamAlgo.how_many_stops(self.listC1), 0, "bad1")
+        self.assertEqual(BrainTeamAlgo.how_many_stops(self.listC2), 9, "bad2")
+        self.assertEqual(BrainTeamAlgo.how_many_stops(self.listC3), 4, "bad3")
+        self.assertEqual(BrainTeamAlgo.how_many_stops(self.listC4), 4, "bad4")
 
 
