@@ -53,25 +53,25 @@ Default name for output is "outputCalls1.csv", custom names can be created insid
 
 # Results
 this is the best results that we were able to gain:
-|Case |Building|Uncompleted calls| average waiting time per call|
-|-----|--------|-----------------|------------------------------|
-|a    |B1.json |                 |                              |
-|a    |B2.json |                 |                              |
-|a    |B3.json |                 |                              |
-|a    |B4.json |                 |                              |
-|a    |B5.json |                 |                              |
-|b    |B2.json |                 |                              |
-|b    |B3.json |                 |                              |
-|b    |B4.json |                 |                              |
-|b    |B5.json |                 |                              |  
-|c    |B2.json |                 |                              |
-|c    |B3.json |                 |                              |
-|c    |B4.json |                 |                              |
-|c    |B5.json |                 |                              | 
-|d    |B2.json |                 |                              |
-|d    |B3.json |                 |                              |
-|d    |B4.json |                 |                              |
-|d    |B5.json |                 |                              |
+|Case |Building|Uncompleted calls| average waiting time per call (seconds)|
+|-----|--------|------------------|---------------------------------|
+|a    |B1.json |       0          |       112                       |
+|a    |B2.json |       0          |      43                         |
+|a    |B3.json |        0         |            27                   |
+|a    |B4.json |        0         |      18                         |
+|a    |B5.json |        0         |         11                      |
+|b    |B4.json |       8          |           185                   |
+|b    |B5.json |       0          |               44                |  
+|b    |B9.json |       0          |               67                |
+|c    |B4.json |       2          |            176                  |
+|c    |B5.json |       0          |               41                | 
+|c    |B9.json |       0          |               72                |
+|d    |B4.json |       8          |             185                 |
+|d    |B5.json |       0          |               44                |
+|d    |B9.json |       0          |               67                |
+|g    |B7.json |       19         |               202               |
+
+little nore - B9 is building of stage 9 from Ex0 (similiar to B5 but with some slower elevators), B7 is building of stage 7 from Ex0 and case g is same as stage 7 case of Ex0
 
 # Assigment instructions
 
