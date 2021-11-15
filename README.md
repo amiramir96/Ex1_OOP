@@ -22,11 +22,12 @@ in this assigment we will create the following packages of files:
 |   Building      |        represents a building, will hold list of elevators, list of calls and the basic parameters of building (aka min and max floor)              | 
 
 
-|   package name: |                                                     **Brain**                                                                                            |
-|-----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **file name**   |      **description**                                                                                                                                     |   
-| BrainTeamAlgo   |       the algorithm itself, holds the whole chain proccess                                                                                               |   
-|generalHelpFuncs |          holds all the generic functions that help to the algorithm proccess                                                                             |
+|   package name:    |                                                  **Brain**                                                                                            |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **file name**      |      **description**                                                                                                                                  |   
+| BrainTeamAlgo      |       the algorithm itself, holds the whole chain proccess                                                                                            |   
+|MergeAndUpdateFuncs |         holds functions that supports the Merge and Updating(elevator and calls parms) functions                                                      |
+|TimeAndPathFuncs    |          holds functions that calculate path and time period of tasks for elevators                                                                   |
 
 The main.py file is the file that activates our algorithm.  
 this file will build the building and allocate elevators to every call in a given csv file, outputing an updated file.
