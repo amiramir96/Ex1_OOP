@@ -11,8 +11,10 @@ the algorithm will combine several principles togheter:
   2. Consistency: when a call is allocated to an elevator - it won't be allocated again. furthermore, the call wont be checked again.  
   3. Cost-Benefit tradeoff: when certain conditions apply - we will "merge" several calls, which means - the chosen elevator will complete multiple calls at once.  
   however, we won't merge many calls together to avoid streching the original call for too long.
-<o1>
-# Algorithm overview
+</o1>
+  
+# Algorithm Overview
+  
 the algorithm work consistenly by the following steps:
   <o1>
   1- get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object as well
@@ -25,11 +27,11 @@ the algorithm work consistenly by the following steps:
         c. time that takes to elevator to move from elev.pos -> alpha.srcFloor -> beta.srcFloor is higher than beta.startTime
         d. alpha.type of task is same as beta.type
         e. beta.src and bet.dest floors is layin along the Path (or equal to the path) of alpha (path is srcFloor to destFloor)
-  <o1>
+  </o1>
   5- the calls that have to be engaged along the same path via the returned list will edit to be allocated by the choosen elevator (section 3)
   6- the choosen elevator parameters of currect Floor and currect Time will be edit to: elevator.currFloor <- alpha.destFloor , elevator.currTime <- time_to_end_alpha_task + (amount_of_stops * elevator.delayTime) 
   7- continue to the next call in list_of_calls       
-<o1>
+</o1>
 
 # Structre of the project code
 in this assigment we will create the following packages of files:
