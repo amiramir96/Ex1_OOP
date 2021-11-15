@@ -48,17 +48,17 @@ def contained_calls(building, list_of_calls: list, call: Ex1Objects.CallForEleva
 
     idx = call.get_id() + 1
     # terms are:
-    while idx < len(list_of_calls) and list_of_calls[idx].getStartTime() <= time_end_call and \
+    while idx < len(list_of_calls) and list_of_calls[idx].get_start_time() <= time_end_call and \
             len(output_list) <= building.get_height()/(len(building.get_list_of_elevator()) + building.get_avg_speed()):
         # there are still more calls in the scenario,
         # we are before the expected finish time of the original mission
         # and there are less than (Building height/(no. of elevators + average elevator speed))
         # calls already in our contained calls list.
-        if list_of_calls[idx].getAllocatedTo() == -1 and call.is_contained(list_of_calls[idx]):
+        if list_of_calls[idx].get_allocated_to() == -1 and call.is_contained(list_of_calls[idx]):
             # call is contained and no elevator is assigned to it
-            roof_time = time_to_end_path(call.get_start_time(), call.get_src(), list_of_calls[idx].getSrc(), elev) - 1
+            roof_time = time_to_end_path(call.get_start_time(), call.get_src(), list_of_calls[idx].get_src(), elev) - 1
             # roof_time - only merge calls that come before elevator leaves original src
-            if roof_time > list_of_calls[idx].getStartTime():
+            if roof_time > list_of_calls[idx].get_start_time():
                 output_list.append(list_of_calls[idx])
         idx = idx + 1
 
