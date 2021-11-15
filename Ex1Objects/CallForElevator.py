@@ -25,9 +25,6 @@ class CallForElevator:
         if 0 <= new_status <= 3:
             self.state = new_status
 
-    def getStatus(self):
-        return self.state
-
     def getSrc(self):
         return self.src
 

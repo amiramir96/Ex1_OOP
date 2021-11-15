@@ -15,9 +15,11 @@ class Building:
         self.avgSpeed = total_speed / len(list_of_elev)
         real_min = 1000000
         real_max = -1000000
+        total = 0
         for x in list_of_calls:
             mini = min(x.getSrc(), x.getDest())
             maxi = max(x.getSrc(), x.getDest())
+            total = total + x.getDistance()
             if mini < real_min:
                 real_min = mini
             if maxi > real_max:
