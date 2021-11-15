@@ -29,7 +29,8 @@ the algorithm work consistenly by the following steps:
             e. beta.src and bet.dest floors is layin along the Path (or equal to the path) of alpha (path is srcFloor to destFloor) <br>  <br>
   5. the calls that have to be engaged along the same path via the returned list will edit to be allocated by the choosen elevator (section 3) 
   6. the choosen elevator parameters of currect Floor and currect Time will be edit to: elevator.currFloor <- alpha.destFloor , elevator.currTime <- time_to_end_alpha_task + (amount_of_stops * elevator.delayTime) 
-  7. continue to the next call in list_of_calls        
+  7. continue to the next call in list_of_calls and return to section 2 (until we arrived at the end of the list)
+  8. extract to csv file the calls list with the changes of the column "allocated to" of the call (to the elevator id that choosen for the task)
 </o1>
 
 # Structre of the project code
