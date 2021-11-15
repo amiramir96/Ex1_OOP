@@ -1,10 +1,10 @@
 from unittest import TestCase
 from Ex1Objects import CallForElevator
 from Ex1Objects import Elevator
-from Brain import BrainTeamAlgo
+from Brain import MergeAndUpdateFuncs
 
 
-class updateCalls_test(TestCase):
+class UpdateCalls_test(TestCase):
     # CallForElevator(time, src, dest, state, allocatedTo, id)
     # Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     c0 = CallForElevator.CallForElevator(12.0, 1, 2, 0, -1, 0)
@@ -25,17 +25,17 @@ class updateCalls_test(TestCase):
 
     def test_update_calls(self):
         # reminder**: total_calls_time = time_end_call + elev.getTotalDelayTime() * stops_counter
-        BrainTeamAlgo.update_calls(self.listC2, self.e0, 64.83)
+        MergeAndUpdateFuncs.update_calls(self.listC2, self.e0, 64.83)
         self.assertEqual(self.e0.get_pos(), 10, "fail update e0 position")
         self.assertAlmostEqual(self.e0.get_curr_time(), 144.83, None, "fail to calculate and/or update accurate updated time", 0.1)
-        BrainTeamAlgo.update_calls(self.listC2, self.e1, 52.16)
+        MergeAndUpdateFuncs.update_calls(self.listC2, self.e1, 52.16)
         self.assertEqual(self.e1.get_pos(), 10, "fail update e0 position")
         self.assertAlmostEqual(self.e1.get_curr_time(), 100.16, None, "fail e1 to calculate and/or update accurate updated time", 0.1)
-        BrainTeamAlgo.update_calls(self.listC1, self.e2, 48.43)
+        MergeAndUpdateFuncs.update_calls(self.listC1, self.e2, 48.43)
         self.assertEqual(self.e2.get_pos(), 10, "fail update e1 position")
         self.assertAlmostEqual(self.e2.get_curr_time(), 54.43, None, "fail e1 to calculate and/or update accurate updated time", 0.1)
         self.e2.set_pos(0)
         self.e2.set_curr_time(0.0)
-        BrainTeamAlgo.update_calls(self.listC3, self.e2, 76.01)
+        MergeAndUpdateFuncs.update_calls(self.listC3, self.e2, 76.01)
         self.assertEqual(self.e2.get_pos(), -1, "fail update e3 position")
         self.assertAlmostEqual(self.e2.get_curr_time(), 88.01, None, "fail e2 to calculate and/or update accurate updated time", 0.1)

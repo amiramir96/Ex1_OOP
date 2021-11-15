@@ -2,10 +2,10 @@ from unittest import TestCase
 from Ex1Objects import Building
 from Ex1Objects import CallForElevator
 from Ex1Objects import Elevator
-from Brain import BrainTeamAlgo
+from Brain import MergeAndUpdateFuncs
 
 
-class howManyStops_test(TestCase):
+class HowManyStops_test(TestCase):
     # CallForElevator(time, src, dest, state, allocatedTo, id)
     # Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     c0 = CallForElevator.CallForElevator(12.0, 1, 2, 0, -1, 0)
@@ -31,9 +31,9 @@ class howManyStops_test(TestCase):
     building3 = Building.Building(-2, 10, listE3, listC3)
 
     def test_how_many_stops(self):
-        self.assertEqual(BrainTeamAlgo.how_many_stops(self.listC1), 0, "bad1")
-        self.assertEqual(BrainTeamAlgo.how_many_stops(self.listC2), 9, "bad2")
-        self.assertEqual(BrainTeamAlgo.how_many_stops(self.listC3), 4, "bad3")
-        self.assertEqual(BrainTeamAlgo.how_many_stops(self.listC4), 4, "bad4")
+        self.assertEqual(MergeAndUpdateFuncs.how_many_stops(self.listC1), 0, "bad1")
+        self.assertEqual(MergeAndUpdateFuncs.how_many_stops(self.listC2), 9, "bad2")
+        self.assertEqual(MergeAndUpdateFuncs.how_many_stops(self.listC3), 4, "bad3")
+        self.assertEqual(MergeAndUpdateFuncs.how_many_stops(self.listC4), 4, "bad4")
 
 

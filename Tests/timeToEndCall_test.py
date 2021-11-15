@@ -1,10 +1,10 @@
 from unittest import TestCase
 from Ex1Objects import CallForElevator
 from Ex1Objects import Elevator
-from Brain import genericHelpFuncs
+from Brain import TimeAndPathFuncs
 
 
-class timeToEndCall_test(TestCase):
+class TimeToEndCall_test(TestCase):
     # CallForElevator(time, src, dest, state, allocatedTo, id)
     # Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     c0 = CallForElevator.CallForElevator(12.0, 1, 2, 0, -1, 0)
@@ -17,11 +17,11 @@ class timeToEndCall_test(TestCase):
     e2 = Elevator.Elevator(2, 2.5, -10, 100, 2, 2, 1, 1)
 
     def test_time_to_end_call(self):
-        self.assertEqual(genericHelpFuncs.time_to_end_call(self.c0, self.e0), 34.0, "bad0")
-        self.assertEqual(genericHelpFuncs.time_to_end_call(self.c0, self.e2), 24.8, "bad0.1")
-        self.assertAlmostEqual(genericHelpFuncs.time_to_end_call(self.c1, self.e2), 37.6, None, "bad1", 0.1)
-        self.assertAlmostEqual(genericHelpFuncs.time_to_end_call(self.c2, self.e2), 47.62, None, "bad2", 0.1)
-        self.assertEqual(genericHelpFuncs.time_to_end_call(self.c3, self.e2), 61.44, "bad3")
-        self.assertEqual(genericHelpFuncs.time_to_end_call(self.c4, self.e2), 69.13, "bad4")
-        self.assertEqual(genericHelpFuncs.time_to_end_call(self.c5, self.e2), 75.61, "bad5")
+        self.assertEqual(TimeAndPathFuncs.time_to_end_call(self.c0, self.e0), 34.0, "bad0")
+        self.assertEqual(TimeAndPathFuncs.time_to_end_call(self.c0, self.e2), 24.8, "bad0.1")
+        self.assertAlmostEqual(TimeAndPathFuncs.time_to_end_call(self.c1, self.e2), 37.6, None, "bad1", 0.1)
+        self.assertAlmostEqual(TimeAndPathFuncs.time_to_end_call(self.c2, self.e2), 47.62, None, "bad2", 0.1)
+        self.assertEqual(TimeAndPathFuncs.time_to_end_call(self.c3, self.e2), 61.44, "bad3")
+        self.assertEqual(TimeAndPathFuncs.time_to_end_call(self.c4, self.e2), 69.13, "bad4")
+        self.assertEqual(TimeAndPathFuncs.time_to_end_call(self.c5, self.e2), 75.61, "bad5")
 
