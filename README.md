@@ -4,6 +4,8 @@ Object Oriented Programming exercise 1
 in this assigment we were required to create an offline algorithm and code it in python for smart elevator system in a building, every mission for moving a given elevator from floor x to y will be named as call. <br>
 in this assigment we are required to: get B.json, Calls.csv files which represents the building and all the calls for the given scenario, in return, the algo have to output a calls.csv file with elevator allocated to each call in the last column.
 
+A literature overview about elevator's algorithms from Ex0 is attached.
+
 # Algorithm logic
 the algorithm will combine several principles togheter:  
 <o1>
