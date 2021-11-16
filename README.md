@@ -1,7 +1,7 @@
 # Ex1_OOP
 Object Oriented Programming exercise 1
 
-in this assigment we were required to create an offline algorithm and code it in python for smart elevator system in a building, every mission for moving a given elevator from floor x to y will be named as call. 
+in this assigment we were required to create an offline algorithm and code it in python for smart elevator system in a building, every mission for moving a given elevator from floor x to y will be named as call. <br>
 in this assigment we are required to: get B.json, Calls.csv files which represents the building and all the calls for the given scenario, in return, the algo have to output a calls.csv file with elevator allocated to each call in the last column.
 
 # Algorithm logic
@@ -69,10 +69,10 @@ this project is tested by unitest libary, the tests can be run with an IDE works
 the package named Tests holds all the test files, we tested every object and function that gonna be used along the project run (the main.py file).
 
 # Running the simulation 
-Run the Main.py file in a directory containing 'Brain', 'Ex1Objects', relevant Building json and csv with calls.  
-You will be asked to provide the paths of the relevant json and csv files.  
-The csv with the results (same calls but allocated to elevators) will be created in the directory.  
-Default name for output is "outputCalls1.csv", custom names can be created inside main.py.  
+Run the Ex1.py file in a directory containing 'Brain', 'Ex1Objects', relevant Building json and csv with calls.  <br>
+You will be asked to provide the paths of the relevant json and csv files.   <br>
+The csv with the results (same calls but allocated to elevators) will be created in the directory.   <br>
+Default name for output is "outputCalls1.csv", custom names can be created inside Ex1.py.   <br>
 
 # Results
 this is the best results that we were able to gain:
