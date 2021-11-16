@@ -15,12 +15,12 @@ the algorithm will combine several principles togheter:
   
 # Algorithm Overview
   
-the algorithm work consistenly by the following steps:
+the algorithm works consistenly by the following steps:
 <o1>
-  1. get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object as well 
-  2. the algorithm will scan step by step the list_of_calls of the scenario, from the nearest to the most future one 
-  3. bid proccess - let alpha be a curr call that the algorithm check which is NOT allocated to any elevator yet(if its already allocated, the algo will jump to next call in the list), the algo will use optimal_elevator function that will return the elevator that will end the call as soon as possible compare to the other elevators which will be choosen 
-  4. merge check proccess - the choosen elevator will be sent for the merge proccess check via the calls_contained function that will return a list of all the calls that contains in the superior call - alpha, contain terms for is: (let beta be a given call that we check) <br>
+  1. get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object. 
+  2. the algorithm will scan call by call the list_of_calls of the scenario, from the first to the last. 
+  3. bid proccess - let alpha be a curr call that the algorithm checks which is NOT allocated to any elevator yet (if its already allocated, the algo will jump to next call on the list), the algo will use optimal_elevator function that will return the elevator that will end the call as soon as possible compared to the other elevators. 
+  4. merge check proccess - the choosen elevator will be sent for the merge proccess check via the contained_calls function that will return a list of all the calls that are contained in the superior call - alpha. call beta is contained if: <br>
  
         <br>a. the potential future return list size is less from a parameter depends on building height, elev spped, elev delay times <br>
             b. beta startTime is lower from the time that will take to the elevator to complete alpha task  <br>
