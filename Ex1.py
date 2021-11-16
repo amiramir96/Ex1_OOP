@@ -5,6 +5,7 @@ import Brain.BrainTeamAlgo
 import json
 import csv
 import sys
+import os
 
 
 def parse_elev(json_name):
@@ -47,7 +48,7 @@ def extract_back_to_csv(calls_list, name):
 
 def main():
     if len(sys.argv) <= 1:
-    # scenario settings
+        # scenario settings
         while True:
             try:
                 building_file_string = input("json path for building and elevators: ")
@@ -66,6 +67,13 @@ def main():
     else:
         building_file_string = sys.argv[1]
         calls_file_string = sys.argv[2]
+    # check if files exist
+    building_exist = os.path.isfile(building_file_string)
+    calls_exist = os.path.isfile(calls_file_string)
+    if not building_exist:
+        building_file_string = "Ex1_input\\Ex1_Buildings\\" + building_file_string
+    if not calls_exist:
+        calls_file_string = "Ex1_input\\Ex1_Calls\\" + calls_file_string
 
     Building_json = open(building_file_string)
     Building_dict = json.load(Building_json)
