@@ -18,19 +18,19 @@ the algorithm will combine several principles togheter:
 the algorithm works consistenly by the following steps:
 <o1>
   1. get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object. 
-  2. the algorithm will scan call by call the list_of_calls of the scenario, from the first to the last. 
-  3. bid proccess - let alpha be a curr call that the algorithm checks which is NOT allocated to any elevator yet (if its already allocated, the algo will jump to next call on the list), the algo will use optimal_elevator function that will return the elevator that will end the call as soon as possible compared to the other elevators. 
-  4. merge check proccess - the choosen elevator will be sent for the merge proccess check via the contained_calls function that will return a list of all the calls that are contained in the superior call - alpha. call beta is contained if: <br>
+  2. the algorithm will scan one by one the calls of the scenario, from the first to the last. 
+  3. bid process - let alpha be a curr call that the algorithm checks which is NOT allocated to any elevator yet (if its already allocated, the algo will jump to next call on the list), the algo will use optimal_elevator function that will return the elevator that will end the call as soon as possible compared to the other elevators. 
+  4. merge check proccess - the chosen elevator will be sent for the merge proccess check via the contained_calls function that will return a list of all the calls that are contained in the superior call - alpha. call beta is contained if: <br>
  
-        <br>a. the potential future return list size is less from a parameter depends on building height, elev spped, elev delay times <br>
+        <br>a. the potential future return list size is less than a certain parameter (depends on building height, elev spped, elev delay times) <br>
             b. beta startTime is lower from the time that will take to the elevator to complete alpha task  <br>
-            c. time that takes to elevator to move from elev.pos -> alpha.srcFloor -> beta.srcFloor is higher than beta.startTime <br>
-            d. alpha.type of task is same as beta.type <br>
-            e. beta.src and bet.dest floors is layin along the Path (or equal to the path) of alpha (path is srcFloor to destFloor) <br>  <br>
-  5. the calls that have to be engaged along the same path via the returned list will edit to be allocated by the choosen elevator (section 3) 
-  6. the choosen elevator parameters of currect Floor and currect Time will be edit to: elevator.currFloor <- alpha.destFloor , elevator.currTime <- time_to_end_alpha_task + (amount_of_stops * elevator.delayTime) 
+            c. time that takes the elevator to move from elev.pos -> alpha.srcFloor -> beta.srcFloor is higher than beta.startTime <br>
+            d. alpha.type of task is same as beta.type (Up/Down) <br>
+            e. alpha.src <= beta.src <= beta.dest <= alpha.dest. beta is fully contained in alpha`s path. <br>  <br>
+  5. the calls that will be engaged along the same path via the returned list will be allocated to the chosen elevator (section 3) 
+  6. the chosen elevator parameters of currect Floor and currect Time will be updated to: elevator.currFloor <- alpha.destFloor , elevator.currTime <- time_to_end_alpha_task + (amount_of_stops * elevator.delayTime) 
   7. continue to the next call in list_of_calls and return to section 2 (until we arrived at the end of the list)
-  8. extract to csv file the calls list with the changes of the column "allocated to" of the call (to the elevator id that choosen for the task)
+  8. extract the allocated calls to a new csv file.
 </o1>
 
 # Structre of the project code
@@ -52,17 +52,9 @@ in this assigment we will create the following packages of files:
 |TimeAndPathFuncs    |          holds functions that calculate path and time period of tasks for elevators                                                                   |
 
 The Ex1.py file is the file that activates our algorithm. (the main function is there)  
-this file will build the building and allocate elevators to every call in a given csv file, outputing an updated file.
-Running the algorithm example:
-```
-python Ex1.py B1.json C2.csv out.csv
-```
 
 there is also Ex1_checker_V1.2_obf.jar which simulates the elevator system moving along the building, and prints the results of the scenario for the processed csv output file.
-Running the test code template:
-```
-java -jar Ex1_checker_V1.2_obf.jar 1111,2222,3333 B2.json Ex1_Calls_case_2_b.csv out.log
-```
+
 
 # Testing
 this project is tested by unitest libary, the tests can be run with an IDE workspace.  
@@ -70,9 +62,20 @@ the package named Tests holds all the test files, we tested every object and fun
 
 # Running the simulation 
 Run the Ex1.py file in a directory containing 'Brain', 'Ex1Objects', relevant Building json and csv with calls.  <br>
-You will be asked to provide the paths of the relevant json and csv files.   <br>
+Use the following code template to run Ex1:  <br>
+```
+python Ex1.py <Building json> <Calls csv> <output name>
+```
 The csv with the results (same calls but allocated to elevators) will be created in the directory.   <br>
-Default name for output is "outputCalls1.csv", custom names can be created inside Ex1.py.   <br>
+
+Running the algorithm example:
+```
+python Ex1.py B1.json C2.csv out.csv
+```
+Running the test code example:
+```
+java -jar Ex1_checker_V1.2_obf.jar 1111,2222,3333 B2.json Ex1_Calls_case_2_b.csv out.log
+```
 
 # Results
 this is the best results that we were able to gain:
