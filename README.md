@@ -55,7 +55,7 @@ in this assigment we will create the following packages of files:
 
 The Ex1.py file is the file that activates our algorithm. (the main function is there)  
 
-there is also Ex1_checker_V1.2_obf.jar which simulates the elevator system moving along the building, and prints the results of the scenario for the processed csv output file.
+there is also Ex1_checker_V1.2_obf.jar  in 'jar score test' which simulates the elevator system moving along the building, and prints the results of the scenario for the processed csv output file.
 
 
 # Testing
