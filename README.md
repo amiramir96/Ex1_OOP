@@ -19,8 +19,8 @@ the algorithm will combine several principles togheter:
 # Algorithm Overview
   
 diagram of the algorithm and code:
-![image](https://user-images.githubusercontent.com/89981387/142495802-69b928a8-ac39-4fff-ad02-57600b3ff14e.png)[image]
-  
+![image](https://user-images.githubusercontent.com/89981387/142495871-60d6e0f5-3c26-4684-a4e8-e4da6cc18246.png)
+
 the algorithm works consistenly by the following steps:
 <o1>
   1. get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object. 
