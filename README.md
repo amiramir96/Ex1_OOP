@@ -96,7 +96,7 @@ this is the best results that we were able to gain:
 |b    |B4.json |       2          |           160                   |
 |b    |B5.json |       0          |               40                |  
 |b    |B9.json |       0          |               67                |
-|c    |B4.json |       2          |            158                  |
+|c    |B4.json |       0          |            158                  |
 |c    |B5.json |       0          |               39                | 
 |d    |B4.json |       0          |             155                 |
 |d    |B5.json |       0          |               39                |
