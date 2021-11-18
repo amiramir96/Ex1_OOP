@@ -1,11 +1,12 @@
 from unittest import TestCase
+
 from Ex1Objects import Building
 from Ex1Objects import CallForElevator
 from Ex1Objects import Elevator
-from Brain import MergeAndUpdateFuncs
+from Brain.TimeAndPathFuncs import is_slow
 
 
-class HowManyStops_test(TestCase):
+class IsSlow_test(TestCase):
     # CallForElevator(time, src, dest, state, allocatedTo, id)
     # Elevator(id, speed, minFloor, maxFloor, closeTime, openTime, startTime, stopTime)
     c0 = CallForElevator.CallForElevator(12.0, 1, 2, 0, -1, 0)
@@ -14,11 +15,9 @@ class HowManyStops_test(TestCase):
     c3 = CallForElevator.CallForElevator(45.44, 7, 10, 0, -1, 3)
     c4 = CallForElevator.CallForElevator(51.53, 9, 4, 0, -1, 4)
     c5 = CallForElevator.CallForElevator(59.61, 5, 0, 0, -1, 5)
-    c6 = CallForElevator.CallForElevator(60.61, 5, 1, 0, -1, 5)
     listC1 = [c0]
     listC2 = [c0, c1, c2, c3, c4, c5]
     listC3 = [c0, c4, c5]
-    listC4 = [c2, c5, c6, c0]
     e0 = Elevator.Elevator(0, 1, -2, 10, 3, 3, 2, 2)
     e1 = Elevator.Elevator(1, 1.5, -5, 50, 2, 2, 1, 1)
     e2 = Elevator.Elevator(2, 2.5, -10, 100, 2, 2, 1, 1)
@@ -28,12 +27,13 @@ class HowManyStops_test(TestCase):
     listE3 = [e1, e2]
     building1 = Building.Building(-2, 10, listE1, listC1)
     building2 = Building.Building(-2, 10, listE2, listC2)
-    building3 = Building.Building(-2, 10, listE3, listC3)
 
-    def test_how_many_stops(self):
-        self.assertEqual(MergeAndUpdateFuncs.how_many_stops(self.listC1), [[1, 2], 0], "bad1")
-        self.assertEqual(MergeAndUpdateFuncs.how_many_stops(self.listC2), [[-2, -1, 0, 0, 1, 2, 4, 5, 7, 8, 9, 10], 9], "bad2")
-        self.assertEqual(MergeAndUpdateFuncs.how_many_stops(self.listC3), [[0, 1, 2, 4, 5, 9], 4], "bad3")
-        self.assertEqual(MergeAndUpdateFuncs.how_many_stops(self.listC4), [[-2, 0, 1, 1, 2, 5, 5, 8], 4], "bad4")
-
-
+    def test_is_slow(self):
+        self.assertTrue(is_slow(self.building1, self.e0), "failed b1 e0")
+        self.assertFalse(is_slow(self.building1, self.e1), "failed b1 e1")
+        self.assertFalse(is_slow(self.building1, self.e2), "failed b1 e2")
+        self.assertTrue(is_slow(self.building1, self.e3), "failed b1 e3")
+        self.assertTrue(is_slow(self.building2, self.e0), "failed b2 e0")
+        self.assertTrue(is_slow(self.building2, self.e1), "failed b2 e1")
+        self.assertFalse(is_slow(self.building2, self.e2), "failed b2 e2")
+        self.assertTrue(is_slow(self.building2, self.e3), "failed b2 e3")

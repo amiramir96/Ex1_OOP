@@ -1,6 +1,6 @@
 import Ex1Objects
 from Brain.TimeAndPathFuncs import time_to_end_path
-
+from Brain.TimeAndPathFuncs import is_slow
 
 def contained_calls(building, list_of_calls: list, call: Ex1Objects.CallForElevator.CallForElevator,
                     elev: Ex1Objects.Elevator.Elevator, time_end_call: float):
@@ -25,7 +25,9 @@ def contained_calls(building, list_of_calls: list, call: Ex1Objects.CallForEleva
         # we are before the expected finish time of the original mission
         # and there are less than (Building height/(no. of elevators + average elevator speed))
         # calls already in our contained calls list.
-        if list_of_calls[idx].get_allocated_to() == -1 and call.is_contained(list_of_calls[idx]):
+        if list_of_calls[idx].get_allocated_to() == -1 \
+            and (is_slow(building, elev) and call.is_contained_slow_elev(building, list_of_calls[idx]) \
+                 or (not is_slow(building, elev) and call.is_contained_fast_elev(building, list_of_calls[idx]))):
             # call is contained and no elevator is assigned to it
             roof_time = time_to_end_path(call.get_start_time(), call.get_src(), list_of_calls[idx].get_src(), elev) - 1
             # roof_time - only merge calls that come before elevator leaves original src
@@ -52,7 +54,8 @@ def how_many_stops(list_calls: list):
     for i in range(0, len(stops_list) - 1):
         if stops_list[i] != stops_list[i + 1]:
             stops_counter = stops_counter + 1
-    return stops_counter
+    # returns the sorted floors of stops
+    return [stops_list, stops_counter]
 
 
 def update_calls(list_calls: list, elev: Ex1Objects.Elevator.Elevator, time_end_call: float):
@@ -69,7 +72,15 @@ def update_calls(list_calls: list, elev: Ex1Objects.Elevator.Elevator, time_end_
     """
     for x in list_calls:
         x.set_allocated_to(elev.get_id())
-    stops_counter = how_many_stops(list_calls)
-    total_calls_time = time_end_call + elev.get_total_delay_time() * stops_counter
-    elev.set_pos(list_calls[0].get_dest())
+    orginized_list = how_many_stops(list_calls)
+    # for UP task take slowest -> highest, for DOWN task take fastest -> slowest
+    if list_calls[0].get_type() == 1:
+        time_end_call = time_to_end_path(list_calls[0].get_start_time(), orginized_list[0][0],
+                                         orginized_list[0][len(orginized_list[0]) - 1], elev)
+        elev.set_pos(orginized_list[0][len(orginized_list[0]) - 1])
+    else:
+        time_end_call = time_to_end_path(list_calls[0].get_start_time(), orginized_list[0][len(orginized_list[0]) - 1],
+                                         orginized_list[0][0], elev)
+        elev.set_pos(orginized_list[0][0])
+    total_calls_time = time_end_call + elev.get_total_delay_time() * orginized_list[1]
     elev.set_curr_time(total_calls_time)

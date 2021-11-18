@@ -46,12 +46,30 @@ class CallForElevator:
     def get_distance(self):
         return abs(self.dest - self.src)
 
-    def is_contained(self, call_check):
-        """ True if check number is between two others """
-        if self.get_type() == call_check.get_type() \
-                and is_between(self.get_src(), self.get_dest(), call_check.get_src()) \
-                and is_between(self.get_src(), self.get_dest(), call_check.get_dest()):
-            return True
+    def is_contained_slow_elev(self, building, call_check):
+        """ True if check number is between two others for slow elevators!"""
+        if self.get_type() == call_check.get_type():
+            if self.get_type() == 1:  # type is UP
+                if is_between(self.get_src(), self.get_dest() + building.get_height() , call_check.get_src()) \
+                        and is_between(self.get_src(), self.get_dest() + building.get_height() * 0.3,
+                                       call_check.get_dest()):
+                    return True
+            else:  # type is DOWN
+                if is_between(self.get_src(), self.get_dest() - building.get_height() , call_check.get_src()) \
+                        and is_between(self.get_src(), self.get_dest() - building.get_height() * 0.25,
+                                       call_check.get_dest()):
+                    return True
+        return False
+
+    def is_contained_fast_elev(self, building, call_check):
+        """ True if check number is between two others for fast elevators!"""
+        if self.get_type() == call_check.get_type() and call_check.get_distance() > self.get_distance()*0.6:
+            if self.get_type() == 1:  # type is UP
+                if is_between(self.get_src(), self.get_dest(), call_check.get_src()):
+                    return True
+            else:  # type is DOWN
+                if is_between(self.get_src(), self.get_dest(), call_check.get_src()):
+                    return True
         return False
 
     def __str__(self):

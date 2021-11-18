@@ -1,32 +1,60 @@
 @startuml
 'https://plantuml.com/sequence-diagram
 
+'list_of_calls: hold calls, sorted via startTime
+'list_of_elevators: hold elev,no sort
+'writer_to_csv --> output.csv : print for idx in list_of_calls ea line
+Ex1.py: writer_to_csv
+Ex1.py : main file, get the input files
+''elev list Sorted via ID number!
+'Bi.json --> list_of_elevators: parse json to elev list obj
 
-'json file input - building && elevator data
-'Bnum.json
-'csv file input - call for elevator data
-'Calls_letter.csv
+Brain : BrainTeamAlgo
+Brain : MergeAndUpdateFuncs
+Brain : TimeAndPathFuncs
 
-'elev list Sorted via ID number!
-Bnum.json --> list_of_elevators: parse json to elev list obj
+BrainTeamAlgo: const algo func
+BrainTeamAlgo: run function - start work!
 
-'Calls list Sorted via start time of task!!!
-Calls_letter.csv --> list_of_calls: parse csv to calls list of obj
+'the both below funcs is updating the chosen elevator
+'to: currect time and currect position of the end of the chain of task the elev got
+MergeAndUpdateFuncs: update_calls
+MergeAndUpdateFuncs: how_many_stops
+'the func check possibility to merge
+'between calls for the given elevator
+MergeAndUpdateFuncs: contained_calls
+
+'given call and elevator - check time to end call
+TimeAndPathFuncs: time_to_end_call
+'given floors start stop, elevator and start time for the task - check end time
+TimeAndPathFuncs: time_to_end_path
+'given call and list of elevators - which elev
+'will end firs the task
+TimeAndPathFuncs: optimal_elevator
+'given building and elevator if elev is higher or lower/equal from avg speed (then slow)
+TimeAndPathFuncs: is_slow
+
+
+Bi.json --> Ex1.py
+Calls_j.csv --> Ex1.py
 
 'construct the whole environment!
-list_of_elevators --> Building : hold elev datas at building
-list_of_calls --> Building : hold Calls datas at building
-Bnum.json --> Building : grants min max floors
+Ex1.py --> Building : req for const Elevator
+Ex1.py --> Building : req for const Building
+'Bi.json --> Building : grants min max floors
 
 'the brain take his data from Building and only his
 Building --> Brain : algorithm shall start run
 
-Brain --> Brain : algorithm system (to be done)
+Brain --> BrainTeamAlgo : algorithm system
 
-Brain --> Building : edit "allocatedTo" cell to choosen elevator at list_of_calls
+Brain --> Ex1.py : edit "allocatedTo" cell to chosen elevator at list_of_calls
 
-Brain --> writer_to_csv : end of algo
-
-writer_to_csv --> output.csv : print for idx in list_of_calls ea line
-
+BrainTeamAlgo --> TimeAndPathFuncs : given task - check optimal_elevator
+BrainTeamAlgo --> MergeAndUpdateFuncs : possibility to merge calls?
+MergeAndUpdateFuncs --> TimeAndPathFuncs : calculates
+BrainTeamAlgo --> MergeAndUpdateFuncs : update_calls and elev via given details!
+BrainTeamAlgo --> Ex1.py : list_of_calls updated!
+Ex1.py --> out.csv : writer_to_csv, same as Calls_j.csv\
+ \n with column of engaged elevators
 @enduml

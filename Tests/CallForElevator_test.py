@@ -1,6 +1,7 @@
 from unittest import TestCase
 from Ex1Objects import CallForElevator
 from Ex1Objects import Elevator
+from Ex1Objects.Building import Building
 
 
 class CallForElevator_test(TestCase):
@@ -11,6 +12,9 @@ class CallForElevator_test(TestCase):
     c3 = CallForElevator.CallForElevator(45.44, 7, 10, 0, -1, 3)
     e0 = Elevator.Elevator(0, 1, -2, 10, 3, 3, 2, 2)
     e1 = Elevator.Elevator(1, 1.5, -5, 50, 2, 2, 1, 1)
+    listC1 = [c0, c1, c2, c3]
+    listE1 = [e0, e1]
+    building1 = Building(-2, 10, listE1, listC1)
 
     def test_get_start_time(self):
         self.assertEqual(self.c0.get_start_time(), 12.0, "fail getStartTime0")
@@ -90,8 +94,14 @@ class CallForElevator_test(TestCase):
         self.assertEqual(self.c2.get_distance(), 10, "fail getDistance2")
         self.assertEqual(self.c3.get_distance(), 3, "fail getDistance3")
 
-    def test_is_contained(self):
-        self.assertFalse(self.c0.is_contained(self.c1), "fail isContained c1 in c0")
-        self.assertFalse(self.c3.is_contained(self.c2), "fail isContained c2 in c3")
-        self.assertFalse(self.c2.is_contained(self.c1), "fail isContained c1 in c2")
-        self.assertTrue(self.c2.is_contained(self.c0), "fail isContained c0 in c2")
+    def test_is_contained_slow_elev(self):
+        self.assertFalse(self.c0.is_contained_slow_elev(self.building1, self.c1), "fail isContained c1 in c0")
+        self.assertFalse(self.c3.is_contained_slow_elev(self.building1, self.c2), "fail isContained c2 in c3")
+        self.assertFalse(self.c2.is_contained_slow_elev(self.building1, self.c1), "fail isContained c1 in c2")
+        self.assertTrue(self.c2.is_contained_slow_elev(self.building1, self.c0), "fail isContained c0 in c2")
+
+    def test_is_contained_fast_elev(self):
+        self.assertFalse(self.c0.is_contained_fast_elev(self.building1, self.c1), "fail isContained c1 in c0")
+        self.assertFalse(self.c3.is_contained_fast_elev(self.building1, self.c2), "fail isContained c2 in c3")
+        self.assertFalse(self.c2.is_contained_fast_elev(self.building1, self.c1), "fail isContained c1 in c2")
+        self.assertFalse(self.c2.is_contained_fast_elev(self.building1, self.c0), "fail isContained c0 in c2")

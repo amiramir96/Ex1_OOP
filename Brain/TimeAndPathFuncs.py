@@ -46,3 +46,7 @@ def optimal_elevator(list_elevators, call: Ex1Objects.CallForElevator.CallForEle
             opt_time = temp_time
             opt_elev = x
     return [opt_elev, opt_time]
+
+
+def is_slow(building, elev: Ex1Objects.Elevator.Elevator):
+    return building.get_avg_speed() >= elev.get_speed()
