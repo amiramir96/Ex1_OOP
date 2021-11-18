@@ -5,6 +5,7 @@ in this assigment we were required to create an offline algorithm and code it in
 in this assigment we are required to: get B.json, Calls.csv files which represents the building and all the calls for the given scenario, in return, the algo have to output a calls.csv file with elevator allocated to each call in the last column.
 
 A literature overview about elevator's algorithms from Ex0 is attached.
+we reccomend to upen the diagram.uml by pycharm program with the plugin "diagram" !
 
 # Algorithm logic
 the algorithm will combine several principles togheter:  
@@ -17,6 +18,9 @@ the algorithm will combine several principles togheter:
   
 # Algorithm Overview
   
+diagram of the algorithm and code:
+![image](https://user-images.githubusercontent.com/89981387/142495871-60d6e0f5-3c26-4684-a4e8-e4da6cc18246.png)
+
 the algorithm works consistenly by the following steps:
 <o1>
   1. get input of building (json) file that holds building and elevator data and input of calls (csv) file then construct the algorithm object. 
@@ -65,6 +69,7 @@ the package named Tests holds all the test files, we tested every object and fun
 # Running the simulation 
 Run the Ex1.py file in a directory containing 'Brain', 'Ex1Objects', relevant Building json and csv with calls.  <br>
 Use the following code template to run Ex1:  <br>
+the simultor jar file is waiting at "[https://github.com/amiramir96/Ex1_OOP/tree/main/jar%20score%20test](url)"
 ```
 python Ex1.py <Building json> <Calls csv> <output name>
 ```
@@ -84,20 +89,19 @@ this is the best results that we were able to gain:
 |Case |Building|Uncompleted calls| average waiting time per call (seconds)|
 |-----|--------|------------------|---------------------------------|
 |a    |B1.json |       0          |       112                       |
-|a    |B2.json |       0          |      43                         |
+|a    |B2.json |       0          |      40                         |
 |a    |B3.json |        0         |            27                   |
 |a    |B4.json |        0         |      18                         |
 |a    |B5.json |        0         |         11                      |
-|b    |B4.json |       8          |           185                   |
-|b    |B5.json |       0          |               44                |  
+|b    |B4.json |       2          |           160                   |
+|b    |B5.json |       0          |               40                |  
 |b    |B9.json |       0          |               67                |
-|c    |B4.json |       2          |            176                  |
-|c    |B5.json |       0          |               41                | 
-|c    |B9.json |       0          |               72                |
-|d    |B4.json |       0          |             183                 |
-|d    |B5.json |       0          |               41                |
-|d    |B9.json |       0          |               70                |
-|g    |B7.json |       19         |               202               |
+|c    |B4.json |       2          |            158                  |
+|c    |B5.json |       0          |               39                | 
+|d    |B4.json |       0          |             155                 |
+|d    |B5.json |       0          |               39                |
+|d    |B9.json |       0          |               68                |
+|g    |B7.json |       20         |               188               |
 
 little nore - B9 is building of stage 9 from Ex0 (similiar to B5 but with some slower elevators), B7 is building of stage 7 from Ex0 and case g is same as stage 7 case of Ex0
 
