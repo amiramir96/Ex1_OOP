@@ -18,7 +18,7 @@ the algorithm will combine several principles togheter:
   
 # Algorithm Overview
   
-please click on the next image to see a diagram of the algorithm and code design
+diagram of the algorithm and code:
 ![image](https://user-images.githubusercontent.com/89981387/142495316-3dbf4c2a-0454-4478-b24c-d685267d0857.png)
 
   
