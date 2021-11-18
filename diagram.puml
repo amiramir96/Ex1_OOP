@@ -32,8 +32,8 @@ TimeAndPathFuncs: time_to_end_path
 'will end firs the task
 TimeAndPathFuncs: optimal_elevator
 'given building and elevator if elev is higher or lower/equal from avg speed (then slow)
-TimeAndPathFuncs: is_slow
-
+'TimeAndPathFuncs: is_slow
+out.csv : the product of the algo code
 
 Bi.json --> Ex1.py
 Calls_j.csv --> Ex1.py
