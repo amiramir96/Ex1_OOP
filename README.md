@@ -19,8 +19,7 @@ the algorithm will combine several principles togheter:
 # Algorithm Overview
   
 diagram of the algorithm and code:
-![image](https://user-images.githubusercontent.com/89981387/142495316-3dbf4c2a-0454-4478-b24c-d685267d0857.png)
-
+![image](https://user-images.githubusercontent.com/89981387/142495802-69b928a8-ac39-4fff-ad02-57600b3ff14e.png)[image]
   
 the algorithm works consistenly by the following steps:
 <o1>
