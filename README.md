@@ -7,9 +7,6 @@ in this assigment we are required to: get B.json, Calls.csv files which represen
 A literature overview about elevator's algorithms from Ex0 is attached.
 we reccomend to upen the diagram.uml by pycharm program with the plugin "diagram" !
 
-[image](https://user-images.githubusercontent.com/89981387/142495085-ac4b8b1b-e5a8-4b62-8878-c2753cc4d29e.png)
-
-
 # Algorithm logic
 the algorithm will combine several principles togheter:  
 <o1>
@@ -20,6 +17,10 @@ the algorithm will combine several principles togheter:
 </o1>
   
 # Algorithm Overview
+  
+please click on the next image to see a diagram of the algorithm and code design
+![image](https://user-images.githubusercontent.com/89981387/142495316-3dbf4c2a-0454-4478-b24c-d685267d0857.png)
+
   
 the algorithm works consistenly by the following steps:
 <o1>
